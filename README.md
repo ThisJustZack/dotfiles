@@ -39,5 +39,5 @@ nix flake init -t github:Eyryse/dotfiles#dotfiles
 After this, make a symbolic link to ``~/.config/nix`` using the following command.
 
 ```bash
-ln -s "$(pwd)/nix ~/.config/nix
+ln -s "$(pwd)/nix" ~/.config/nix
 ```
