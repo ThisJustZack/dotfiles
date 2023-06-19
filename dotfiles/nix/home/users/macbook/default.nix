@@ -5,8 +5,11 @@
         };
 
         imports = [
-                ../../../../system/home-manager
                 ../../features/lsp
                 ../../features/nvim
+                ../../features/font
+                ../../features/kitty
+                ../../features/zsh
+                ../../../system/home-manager
         ];
 }

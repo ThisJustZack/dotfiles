@@ -6,7 +6,7 @@ This is my dotfile configuration that is used across all of my systems that have
 
 - ``Operating System``: MacOS, Linux-derived operating systems
 - ``Window Manager``: Default (will switch to Yabai in the future)
-- ``Terminal``: Kitty
+- ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim
 - ``Font``: Fira Code
@@ -40,4 +40,10 @@ After this, make a symbolic link to ``~/.config/nix`` using the following comman
 
 ```bash
 ln -s "$(pwd)/nix" ~/.config/nix
+```
+
+If ``home manager`` does not get installed, use the following command with the experimental ``nix-command`` feature opted into.
+
+```bash
+nix shell nixpkgs#home-manager
 ```

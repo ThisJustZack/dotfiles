@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
         home = {
                 username = "zack-wsl";
-                homeDirectory = "/home/zack-wsl";
+                homeDirectory = "/home/${config.home.username}";
         };
 
         imports = [

@@ -3,7 +3,7 @@
                 enable = true;
                 font = {
                         name = "Fira Code";
-                        size = 14;
+                        size = 12;
                 };
         };
 }

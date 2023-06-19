@@ -5,6 +5,6 @@
         };
 
         imports = [
-                ../../../../system/home-manager
+                ../../../system/home-manager
         ];
 }
