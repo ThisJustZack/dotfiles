@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
         home = {
                 username = "template";
-                homeDirectory = "/home/${config.home.username}" || "/Users/${config.home.username}";
+                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
         };
 
         imports = [

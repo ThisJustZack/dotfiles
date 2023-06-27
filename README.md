@@ -1,49 +1,62 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-This is my dotfile configuration that is used across all of my systems that have some flavor of Linux. It utilizes the [Nix ecosystem](https://www.nixos.wiki/wiki/Nix_Ecosystem) to have declarative, reproducible environments for each system to make the only consideration be how secure a system should be.
+This is my dotfile configuration that is used across all of my systems that have some flavor of Linux. It utilizes the [Nix ecosystem](https://www.nixos.wiki/wiki/Nix_Ecosystem) to have declarative, reproducible environments for each system to make the only consideration be how stable a system should be.
 
-## Content
+## **Content**
 
 - ``Operating System``: MacOS, Linux-derived operating systems
-- ``Window Manager``: Default (will switch to Yabai in the future)
+- ``Window Manager``: Default
 - ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim
 - ``Font``: Fira Code
 
-## Structure
+## **Structure**
 
 - ``system``: Shared system configuration entrypoints between NixOS, MacOS, and other Linux-derived operating systems
 - ``home``: User-defined environments (``home/users``) with applications and their respective configurations (``home/features``)
 - ``pkgs``: Custom packages written for use in ``home``
 - ``overlays``: Overlays for nixpkgs and overwritten packages for custom builds
 
-## Requirements
+## **Install**
 
-The only requirement is to have [Nix](https://www.nixos.org/download.html) installed with the experimental ``nix-command`` and ``flakes`` features opted into.
+If using WSL with a non-NixOS distribution, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine) to enable systemd.
 
-To opt into the experimental ``nix-command`` and ``flakes`` features temporarily, this command can be used.
+If using NixOS, there are no steps to follow currently.
 
+Install ``nix`` with the following command.
 ```bash
-export NIX_CONFIG="experimental-features = nix-command flakes"
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
-## Install
-
 This configuration uses a template flake for fast imports that only require the ``nix`` command.
-
 ```bash
-nix flake init -t github:Eyryse/dotfiles#dotfiles
+nix --extra-experimental-features "nix-command flakes" flake init -t github:Eyryse/dotfiles#dotfiles
 ```
 
 After this, make a symbolic link to ``~/.config/nix`` using the following command.
-
 ```bash
 ln -s "$(pwd)/nix" ~/.config/nix
 ```
-
-If ``home manager`` does not get installed, use the following command with the experimental ``nix-command`` feature opted into.
-
+- If the ``~/.config`` directory does not exist, use the following command to create it.
 ```bash
-nix shell nixpkgs#home-manager
+mkdir ~/.config
 ```
+
+Now, follow the instructions according to the OS of the system.
+
+## *MacOS*
+
+Build ``nix-darwin`` with the following commands.
+```bash
+```
+
+## *Linux*
+
+Install ``home-manager`` with the following commands.
+```bash
+```
+
+## **TODO**
+
+- Yabai and SKHD configuration for MacOS
