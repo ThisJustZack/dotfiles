@@ -18,7 +18,7 @@ This is my dotfile configuration that is used across all of my systems that have
 - ``pkgs``: Custom packages written for use in ``home``
 - ``overlays``: Overlays for nixpkgs and overwritten packages for custom builds
 
-## **Install**
+## **Install Dependencies**
 
 If using WSL with a non-NixOS distribution, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine) to enable systemd.
 
@@ -29,7 +29,7 @@ Install ``nix`` with the following command.
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-This configuration uses a template flake for fast imports that only require the ``nix`` command.
+This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
 nix --extra-experimental-features "nix-command flakes" flake init -t github:Eyryse/dotfiles#dotfiles
 ```
@@ -47,16 +47,41 @@ Now, follow the instructions according to the OS of the system.
 
 ## *MacOS*
 
-Build ``nix-darwin`` with the following commands.
+Add the ``home-manager`` Nix upstream to the system.
 ```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 ```
+
+Install XCode CLI tools.
+```bash
+xcode-select --install
+```
+
+Use the ``nix-darwin`` Nix installer.
+```bash
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+./result/bin/darwin-installer
+```
+- This runs the [shell commands](https://github.com/LnL7/nix-darwin/blob/master/pkgs/darwin-installer/default.nix) to configure the system for ``nix-darwin``.
 
 ## *Linux*
 
-Install ``home-manager`` with the following commands.
+Add the ``home-manager`` Nix upstream to the system.
 ```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 ```
+Install ``home-manager`` using the Nix upstream added.
+```bash
+nix-shell '<home-manager>' -A install
+```
+
+## **Install Profiles**
+
+Now that the dependencies have been installed, the profiles established in [``flake.nix``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/flake.nix) can be installed.
 
 ## **TODO**
 
 - Yabai and SKHD configuration for MacOS
+- Add profile shell scripts into a ``bin`` folder to make profile installs simpler
