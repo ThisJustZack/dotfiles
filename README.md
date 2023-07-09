@@ -31,7 +31,7 @@ sh <(curl -L https://nixos.org/nix/install)
 
 This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
-nix --extra-experimental-features "nix-command flakes" flake init -t github:Eyryse/dotfiles#dotfiles
+nix --experimental-features "nix-command flakes" flake init -t github:Eyryse/dotfiles#dotfiles
 ```
 
 After this, make a symbolic link to ``~/.config/nix`` using the following command.
@@ -96,7 +96,7 @@ rm -rf ./result
 Run these commands to build the ``home-manager`` configuration. Any user defined in ``flake.nix`` can be referred to, such as ``wsl``.
 ```bash
 cd $HOME/.config/nix
-home-manager switch --extra-experimental-features "nix-command flakes" --flake .#wsl
+home-manager switch --experimental-features "nix-command flakes" --flake .#wsl
 ```
 
 ## **TODO**
