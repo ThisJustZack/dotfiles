@@ -1,4 +1,6 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
+        services.nix-daemon.enable = true;
+
         networking = {
                 computerName = "macbook";
         };

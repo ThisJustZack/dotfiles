@@ -81,6 +81,16 @@ nix-shell '<home-manager>' -A install
 
 Now that the dependencies have been installed, the profiles established in [``flake.nix``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/flake.nix) can be installed.
 
+## *MacOS*
+
+Run these commands to build the Darwin configuration for ``macbook``.
+```bash
+cd $HOME/.config/nix
+nix --experimental-features "nix-commands flakes" build .#darwinConfigurations.macbook.system
+./result/sw/bin/darwin-rebuild switch --flake .#macbook
+rm -rf ./result
+```
+
 ## **TODO**
 
 - Yabai and SKHD configuration for MacOS

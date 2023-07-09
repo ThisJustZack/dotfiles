@@ -33,7 +33,7 @@
                         "macbook" = darwin.lib.darwinSystem {
                                 system = "aarch64-darwin";
                                 modules = [
-                                        ./system/home-manager
+                                        ./system/darwin
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 # nixpkgs.overlays = nixpkgsOverlays;
@@ -41,7 +41,7 @@
                                                 nix = {
                                                         package = pkgs.nixFlakes;
                                                         settings = {
-                                                                allowedUsers = [ user ];
+                                                                trusted-users = [ user ];
                                                                 experimental-features = [ "nix-command" "flakes" ];
                                                         };
                                                 };
