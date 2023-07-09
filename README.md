@@ -86,7 +86,7 @@ Now that the dependencies have been installed, the profiles established in [``fl
 Run these commands to build the ``nix-darwin`` configuration for ``macbook``.
 ```bash
 cd $HOME/.config/nix
-nix --experimental-features "nix-commands flakes" build .#darwinConfigurations.macbook.system
+nix --experimental-features "nix-command flakes" build .#darwinConfigurations.macbook.system
 ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 rm -rf ./result
 ```
