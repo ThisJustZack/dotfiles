@@ -8,17 +8,17 @@ in
         ];
 
         homebrew.formulae = []
-                // callPackage ../../features/cli {};
+                ++ callPackage ../../features/cli {};
 
         homebrew.casks = []
-                // callPackage ../../features/desktop {};
+                ++ callPackage ../../features/desktop {};
 
         home-manager = {
                 users.${user} = {
                         home = {
                                 packages = with pkgs; []
-                                        // callPackage ../../features/lsp {}
-                                        // callPackage ../../features/font {};
+                                        ++ callPackage ../../features/lsp {}
+                                        ++ callPackage ../../features/font {};
                         };
                         imports = [
                                 ../../features/nvim
