@@ -83,12 +83,20 @@ Now that the dependencies have been installed, the profiles established in [``fl
 
 ## *MacOS*
 
-Run these commands to build the Darwin configuration for ``macbook``.
+Run these commands to build the ``nix-darwin`` configuration for ``macbook``.
 ```bash
 cd $HOME/.config/nix
 nix --experimental-features "nix-commands flakes" build .#darwinConfigurations.macbook.system
 ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 rm -rf ./result
+```
+
+## *Linux*
+
+Run these commands to build the ``home-manager`` configuration. Any user defined in ``flake.nix`` can be referred to, such as ``wsl``.
+```bash
+cd $HOME/.config/nix
+home-manager switch --extra-experimental-features "nix-command flakes" --flake .#wsl
 ```
 
 ## **TODO**

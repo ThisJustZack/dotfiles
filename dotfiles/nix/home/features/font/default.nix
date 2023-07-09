@@ -1,5 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
-        home.packages = with pkgs; [
-                fira-code
-        ];
-}
+{ pkgs, ... }:
+with pkgs; [
+        fira-code
+]

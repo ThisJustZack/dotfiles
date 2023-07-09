@@ -28,7 +28,6 @@
         in
         {
                 # Darwin configuration entrypoint
-                # Available through 'darwin-rebuild --flake .#your-profile-name'
                 darwinConfigurations = {
                         "macbook" = darwin.lib.darwinSystem {
                                 system = "aarch64-darwin";
@@ -41,12 +40,13 @@
                                                 nix = {
                                                         package = pkgs.nixFlakes;
                                                         settings = {
-                                                                trusted-users = [ user ];
+                                                                trusted-users = [ "${user}" ];
                                                                 experimental-features = [ "nix-command" "flakes" ];
                                                         };
                                                 };
 
                                                 users.users.${user} = {
+                                                        name = "${user}";
                                                         home = "/Users/${user}";
                                                         shell = pkgs.zsh;
                                                 };
@@ -68,7 +68,6 @@
                 };
 
                 # Standalone home-manager configuration entrypoint
-                # Available through 'home-manager switch --flake .#your-profile-name'
                 homeConfigurations = {
                         "wsl" = 
                         let

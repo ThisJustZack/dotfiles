@@ -9,8 +9,13 @@
                 stateVersion = 4;
 
                 defaults = {
+                        NSGlobalDomain = {
+                                "com.apple.mouse.tapBehavior" = 1;
+                        };
                         dock = {
                                 autohide = true;
+                                orientation = "bottom";
+                                show-recents = false;
                                 tilesize = 48;
                         };
                         trackpad = {
