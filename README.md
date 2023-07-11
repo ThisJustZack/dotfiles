@@ -15,6 +15,7 @@ This is my dotfile configuration that is used across all of my systems that have
 
 - ``system``: Shared system configuration entrypoints between NixOS, MacOS, and other Linux-derived operating systems
 - ``home``: User-defined environments (``home/users``) with applications and their respective configurations (``home/features``)
+- ``brew``: Homebrew configuration and environment for MacOS
 - ``pkgs``: Custom packages written for use in ``home``
 - ``overlays``: Overlays for nixpkgs and overwritten packages for custom builds
 
@@ -65,7 +66,7 @@ Install homebrew.
 
 Add homebrew to the $PATH.
 ```bash
-eval "$(/opt/homebrew/bin/brew shellenv)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/`whoami`/.zprofile
 ```
 
 Use the ``nix-darwin`` Nix installer.
@@ -82,6 +83,7 @@ Add the ``home-manager`` Nix upstream to the system.
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 ```
+
 Install ``home-manager`` using the Nix upstream added.
 ```bash
 nix-shell '<home-manager>' -A install

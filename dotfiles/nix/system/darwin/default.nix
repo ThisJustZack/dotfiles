@@ -30,11 +30,4 @@
                         };
                 };
         };
-
-        homebrew.enable = true;
-        homebrew.onActivation = {
-                autoUpdate = true;
-                cleanup = "zap";
-                upgrade = true;
-        };
 }

@@ -33,6 +33,7 @@
                                 system = "aarch64-darwin";
                                 modules = [
                                         ./system/darwin
+                                        ./brew
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 # nixpkgs.overlays = nixpkgsOverlays;
