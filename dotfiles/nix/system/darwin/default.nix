@@ -5,6 +5,10 @@
                 hostName = "macbook";
         };
 
+        security = {
+                pam.enableSudoTouchIdAuth = true;
+        };
+
         system = {
                 stateVersion = 4;
 

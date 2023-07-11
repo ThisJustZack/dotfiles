@@ -54,8 +54,6 @@
                                         home-manager.darwinModules.home-manager {
                                                 home-manager = {
                                                         extraSpecialArgs = { inherit inputs; };
-                                                        useGlobalPkgs = true;
-                                                        useUserPackages = true;
                                                         users.${user} = import ./home/users/macbook;
                                                 };
                                         }

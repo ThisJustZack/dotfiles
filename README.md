@@ -58,6 +58,16 @@ Install XCode CLI tools.
 xcode-select --install
 ```
 
+Install homebrew.
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Add homebrew to the $PATH.
+```bash
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
 Use the ``nix-darwin`` Nix installer.
 ```bash
 nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
@@ -93,7 +103,7 @@ rm -rf ./result
 
 ## *Linux*
 
-Run these commands to build the ``home-manager`` configuration. Any user defined in ``flake.nix`` can be referred to, such as ``wsl``.
+Run these commands to build the ``home-manager`` configuration for ``wsl``.
 ```bash
 cd $HOME/.config/nix
 home-manager switch --experimental-features "nix-command flakes" --flake .#wsl

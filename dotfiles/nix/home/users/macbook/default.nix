@@ -6,11 +6,11 @@
                 ../../features/zsh
         ];
 
-        homebrew.formulae = []
-                ++ callPackage ../../features/formulae {};
+        # homebrew.formulae = []
+        #         ++ callPackage ../../features/formulae {};
 
-        homebrew.casks = []
-                ++ callPackage ../../features/casks {};
+        # homebrew.casks = []
+        #         ++ callPackage ../../features/casks {};
 
         home = {
                 username = "zack";
