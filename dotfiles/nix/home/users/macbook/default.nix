@@ -1,31 +1,22 @@
-{ inputs, outputs, lib, config, pkgs, ... }: 
-let
-        user = "zack";
-in
-{
+{ config, pkgs, ... }: {
         imports = [
-                <home-manager/nix-darwin>
+                ../../../system/home-manager
+                ../../features/nvim
+                ../../features/kitty
+                ../../features/zsh
         ];
 
         homebrew.formulae = []
-                ++ callPackage ../../features/cli {};
+                ++ callPackage ../../features/formulae {};
 
         homebrew.casks = []
-                ++ callPackage ../../features/desktop {};
+                ++ callPackage ../../features/casks {};
 
-        home-manager = {
-                users.${user} = {
-                        home = {
-                                packages = with pkgs; []
-                                        ++ callPackage ../../features/lsp {}
-                                        ++ callPackage ../../features/font {};
-                        };
-                        imports = [
-                                ../../features/nvim
-                                ../../features/kitty
-                                ../../features/zsh
-                        ];
-                        manual.manpages.enable = true;
-                };
+        home = {
+                username = "zack";
+                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+                packages = with pkgs; []
+                        ++ callPackage ../../features/lsp {}
+                        ++ callPackage ../../features/font {};
         };
 }

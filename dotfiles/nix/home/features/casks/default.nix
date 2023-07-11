@@ -1,0 +1,7 @@
+{ ... }:
+[
+        "bitwarden"
+        "discord"
+        "protonvpn"
+        "spotify"
+]

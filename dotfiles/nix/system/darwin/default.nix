@@ -2,7 +2,7 @@
         services.nix-daemon.enable = true;
 
         networking = {
-                computerName = "macbook";
+                hostName = "macbook";
         };
 
         system = {

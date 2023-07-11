@@ -1,7 +1,3 @@
 { ... }:
-[
-        "bitwarden"
-        "discord"
-        "protonvpn"
-        "spotify"
+with pkgs; [
 ]

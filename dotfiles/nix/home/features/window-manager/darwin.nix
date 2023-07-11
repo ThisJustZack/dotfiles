@@ -1,5 +1,2 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
-        imports = [
-                ./yabai
-        ];
-}
+{ inputs, outputs, lib, config, pkgs, ... }:
+callPackage ./yabai { }

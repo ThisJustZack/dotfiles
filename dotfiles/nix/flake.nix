@@ -56,11 +56,7 @@
                                                         extraSpecialArgs = { inherit inputs; };
                                                         useGlobalPkgs = true;
                                                         useUserPackages = true;
-                                                        users.${user} = { ... }: {
-                                                                imports = [
-                                                                        ./home/users/macbook
-                                                                ];
-                                                        };
+                                                        users.${user} = import ./home/users/macbook;
                                                 };
                                         }
                                 ];
@@ -83,22 +79,6 @@
                                 extraSpecialArgs = { inherit inputs; };
                                 modules = [
                                         ./home/users/wsl
-                                ];
-                        };
-                        "macbook" = 
-                        let
-                                system = "aarch64-darwin";
-                                pkgs = import nixpkgs {
-                                        inherit system;
-                                        config = nixpkgsConfig;
-                                        # overlays = nixpkgsOverlays;
-                                };
-                        in
-                        home-manager.lib.homeManagerConfiguration {
-                                inherit pkgs;
-                                extraSpecialArgs = { inherit inputs; };
-                                modules = [
-                                        ./home/users/macbook
                                 ];
                         };
                 };
