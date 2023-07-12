@@ -34,6 +34,7 @@
                                 modules = [
                                         ./system/darwin
                                         ./brew
+                                        ./home/features/window-manager/yabai
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 # nixpkgs.overlays = nixpkgsOverlays;

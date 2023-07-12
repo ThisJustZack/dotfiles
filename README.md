@@ -5,7 +5,7 @@ This is my dotfile configuration that is used across all of my systems that have
 ## **Content**
 
 - ``Operating System``: MacOS, Linux-derived operating systems
-- ``Window Manager``: Default
+- ``Window Manager``: Yabai (MacOS), Default
 - ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim
@@ -113,5 +113,5 @@ home-manager switch --experimental-features "nix-command flakes" --flake .#wsl
 
 ## **TODO**
 
-- Yabai and SKHD configuration for MacOS
+- Add SKHD configuration for MacOS
 - Add profile shell scripts into a ``bin`` folder to make profile installs simpler
