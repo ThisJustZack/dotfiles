@@ -5,6 +5,8 @@
                 cleanup = "zap";
                 upgrade = true;
         };
+
+        environment.systemPath = [ config.homebrew.brewPrefix = "/opt/local/bin" ];
         
         homebrew.brews = import ./formulae { };
         homebrew.casks = import ./casks { };

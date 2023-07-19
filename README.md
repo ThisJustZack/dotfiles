@@ -64,11 +64,6 @@ Install homebrew.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Add homebrew to the $PATH.
-```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/`whoami`/.zprofile
-```
-
 Use the ``nix-darwin`` Nix installer.
 ```bash
 nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
@@ -113,5 +108,4 @@ home-manager switch --experimental-features "nix-command flakes" --flake .#wsl
 
 ## **TODO**
 
-- Add SKHD configuration for MacOS
 - Add profile shell scripts into a ``bin`` folder to make profile installs simpler

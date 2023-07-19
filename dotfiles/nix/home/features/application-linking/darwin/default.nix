@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 {
         disabledModules = [ "targets/darwin/linkapps.nix" ];
         home.activation = lib.mkIf pkgs.stdenv.isDarwin {
