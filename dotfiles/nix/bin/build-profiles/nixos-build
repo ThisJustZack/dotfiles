@@ -1,0 +1,18 @@
+#!/bin/sh
+
+GREEN='\033[1;32m'
+RED='\033[1;31m'
+CLEAR='\033[0m'
+
+profile() {
+        PROFILE="${1}"
+
+        cd $HOME/.config/nix
+
+        echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
+        nixos-rebuild switch --experimental-features "nix-command flakes" --flake .$PROFILE &&
+                echo "${GREEN}Finished building profile!${CLEAR}" ||
+                echo "${RED}Build Error${CLEAR}"
+}
+
+profile $@

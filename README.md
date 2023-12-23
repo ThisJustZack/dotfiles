@@ -8,11 +8,12 @@ This is my dotfile configuration that is used across all of my systems that have
 - ``Window Manager``: Yabai (MacOS), Default
 - ``Terminal``: kitty
 - ``Shell``: zsh
-- ``Editor``: neovim
+- ``Editor``: neovim, VS Code
 - ``Font``: Fira Code
 
 ## **Structure**
 
+- ``bin``: Profile management shell scripts
 - ``system``: Shared system configuration entrypoints between NixOS, MacOS, and other Linux-derived operating systems
 - ``home``: User-defined environments (``home/users``) with applications and their respective configurations (``home/features``)
 - ``brew``: Homebrew configuration and environment for MacOS
@@ -21,14 +22,11 @@ This is my dotfile configuration that is used across all of my systems that have
 
 ## **Install Dependencies**
 
-If using WSL with a non-NixOS distribution, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine) to enable systemd.
-
-If using NixOS, there are no steps to follow currently.
-
 Install ``nix`` with the following command.
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
+- The source of this is maintained in the following [repository](https://github.com/DeterminateSystems/nix-installer).
 
 This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
@@ -37,41 +35,12 @@ nix --experimental-features "nix-command flakes" flake init -t github:Eyryse/dot
 
 After this, make a symbolic link to ``~/.config/nix`` using the following command.
 ```bash
-ln -s "$(pwd)/nix" ~/.config/nix
-```
-- If the ``~/.config`` directory does not exist, use the following command to create it.
-```bash
-mkdir ~/.config
+mkdir -p ~/.config && ln -s "$(pwd)/nix" ~/.config/nix
 ```
 
-Now, follow the instructions according to the OS of the system.
+Now, continue the following instructions according to the OS of the system.
 
-## *MacOS*
-
-Add the ``home-manager`` Nix upstream to the system.
-```bash
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-```
-
-Install XCode CLI tools.
-```bash
-xcode-select --install
-```
-
-Install homebrew.
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Use the ``nix-darwin`` Nix installer.
-```bash
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer
-```
-- This runs the [shell commands](https://github.com/LnL7/nix-darwin/blob/master/pkgs/darwin-installer/default.nix) to configure the system for ``nix-darwin``.
-
-## *Linux*
+### *Standalone Linux*
 
 Add the ``home-manager`` Nix upstream to the system.
 ```bash
@@ -84,28 +53,38 @@ Install ``home-manager`` using the Nix upstream added.
 nix-shell '<home-manager>' -A install
 ```
 
+Change the pretty hostname of the system with ``hostnamectl``.
+```bash
+hostnamectl set-hostname wsl --pretty
+```
+- It is assumed that systemd is enabled on the system. To enable it in WSL, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine).
+
+### *MacOS*
+
+Install ``XCode CLI tools`` to the system.
+```bash
+xcode-select --install
+```
+
+Install ``homebrew`` to the system.
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Change the local hostname of the system using ``scutil``.
+```bash
+sudo scutil -set LocalHostName macbook
+```
+
+### *NixOS*
+
+There are currently no steps to follow. The ``bin`` files are capable of having a configuration should the [``nixos-build``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/bin/build-profiles/nixos-build) script be maintained.
+
 ## **Install Profiles**
 
-Now that the dependencies have been installed, the profiles established in [``flake.nix``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/flake.nix) can be installed.
+Now that the dependencies have been installed, the profiles established within [``flake.nix``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/flake.nix) from the template can be installed.
 
-## *MacOS*
-
-Run these commands to build the ``nix-darwin`` configuration for ``macbook``.
+This is streamlined through a [script](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/bin/build) found in ``bin``.
 ```bash
-cd $HOME/.config/nix
-nix --experimental-features "nix-command flakes" build .#darwinConfigurations.macbook.system
-./result/sw/bin/darwin-rebuild switch --flake .#macbook
-rm -rf ./result
+~/.config/nix/bin/build
 ```
-
-## *Linux*
-
-Run these commands to build the ``home-manager`` configuration for ``wsl``.
-```bash
-cd $HOME/.config/nix
-home-manager switch --experimental-features "nix-command flakes" --flake .#wsl
-```
-
-## **TODO**
-
-- Add profile shell scripts into a ``bin`` folder to make profile installs simpler

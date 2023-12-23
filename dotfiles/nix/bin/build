@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd $HOME/.config/nix
+
+build() {
+	if [ -f /etc/NIXOS ]; then
+                ./bin/build-profiles/nixos-build $(hostnamectl --pretty)
+        if [ "$(uname)" == "Darwin" ]; then
+                ./bin/build-profiles/darwin-build
+        elif [ "$(uname)" == "Linux" ]; then
+                ./bin/build-profiles/linux-build $(hostnamectl --pretty)
+        fi
+}
+
+build
