@@ -30,7 +30,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
-nix --experimental-features "nix-command flakes" flake init -t github:Eyryse/dotfiles#dotfiles
+nix --experimental-features "nix-command flakes" flake init -t github:ThisJustZack/dotfiles#dotfiles
 ```
 
 After this, make a symbolic link to ``~/.config/nix`` using the following command.
@@ -78,13 +78,13 @@ sudo scutil -set LocalHostName macbook
 
 ### *NixOS*
 
-There are currently no steps to follow. The ``bin`` files are capable of having a configuration should the [``nixos-build``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/bin/build-profiles/nixos-build) script be maintained.
+There are currently no steps to follow. The ``bin`` files are capable of having a configuration should the [``nixos-build``](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/bin/build-profiles/nixos-build) script be maintained.
 
 ## **Install Profiles**
 
-Now that the dependencies have been installed, the profiles established within [``flake.nix``](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/flake.nix) from the template can be installed.
+Now that the dependencies have been installed, the profiles established within [``flake.nix``](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/flake.nix) from the template can be installed.
 
-This is streamlined through a [script](https://github.com/Eyryse/dotfiles/blob/main/dotfiles/nix/bin/build) found in ``bin``.
+This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/bin/build) found in ``bin``. It is executed with the following command.
 ```bash
 ~/.config/nix/bin/build
 ```
