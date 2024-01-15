@@ -33,6 +33,11 @@ This configuration uses a template flake for simplifying cloning so that it only
 nix --experimental-features "nix-command flakes" flake init -t github:ThisJustZack/dotfiles#dotfiles
 ```
 
+After retrieving the clone, make the config directory and move the dotfiles using the following command.
+```bash
+mkdir -p ~/.config/nix && rm -rf ~/.config/nix/* && mv nix/* ~/.config/nix && rm -rf nix
+```
+
 Now, continue the following instructions according to the OS of the system.
 
 ### *Standalone Linux*
@@ -71,4 +76,8 @@ Now that the dependencies have been installed, the profiles established within [
 This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/bin/build) found in ``bin``. It is executed with the following command.
 ```bash
 ~/.config/nix/bin/build
+```
+- If any of the scripts have a 'Permission denied' message, use the following command to grant permission on the target
+```bash
+chmod 755 ~/.config/nix/bin/TARGET
 ```

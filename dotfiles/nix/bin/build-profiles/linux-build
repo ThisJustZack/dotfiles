@@ -6,8 +6,8 @@ CLEAR='\033[0m'
 
 profile() {
         echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
-        ( home-manager switch --experimental-features "nix-command flakes" --flake ~/nix/#$(hostnamectl --pretty) ||
-          nix --experimental-features "nix-command flakes" run home-manager/release-23.11 -- switch --flake ~/nix/#$(hostnamectl --pretty) ) &&
+        ( home-manager switch --experimental-features "nix-command flakes" --flake .#$(hostnamectl --pretty) ||
+          nix --experimental-features "nix-command flakes" run home-manager/release-23.11 -- switch --flake .#$(hostnamectl --pretty) ) &&
                 echo "${GREEN}Finished building profile!${CLEAR}" ||
                 echo "${RED}Build Error${CLEAR}"
 }
