@@ -35,7 +35,7 @@
                         yabai -m rule --add app="^Spotify$" space=music
                         yabai -m rule --add app="^kitty$" space=terminal
 
-                        yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect))|Move|Info|Pref)" manage=off
+                        yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect))|Move|Info|Pref" manage=off
                         yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
                         yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
                         yabai -m rule --add label="Software Update" app="^Software Update$" manage=off

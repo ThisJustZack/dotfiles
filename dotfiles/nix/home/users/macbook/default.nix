@@ -5,15 +5,17 @@
                 ../../features/editor/nvim
                 ../../features/terminal/kitty
                 ../../features/shell/zsh
-                ../../features/command-line/enhancement/starship
+                ../../features/command-line/starship
         ];
 
         home = {
                 username = "zack";
                 homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
                 packages = with pkgs; []
-                        ++ callPackage ../../features/command-line/lsp {}
-                        ++ callPackage ../../features/command-line/development/rust {}
+                        ++ callPackage ../../features/software-development/javascript {}
+                        ++ callPackage ../../features/software-development/nix {}
+                        ++ callPackage ../../features/software-development/rust {}
+                        ++ callPackage ../../features/software-development/typescript {}
                         ++ callPackage ../../features/font {};
         };
 }

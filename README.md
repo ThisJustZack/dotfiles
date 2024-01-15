@@ -5,7 +5,7 @@ This is my dotfile configuration that is used across all of my systems that have
 ## **Content**
 
 - ``Operating System``: MacOS, Linux-derived operating systems
-- ``Window Manager``: Yabai (MacOS), Default
+- ``Window Manager``: Default (MacOS), Default (Linux)
 - ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim, VS Code
@@ -22,7 +22,7 @@ This is my dotfile configuration that is used across all of my systems that have
 
 ## **Install Dependencies**
 
-Install ``nix`` with the following command.
+Install ``nix`` with the following command if it is not installed already.
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
@@ -33,25 +33,9 @@ This configuration uses a template flake for simplifying cloning so that it only
 nix --experimental-features "nix-command flakes" flake init -t github:ThisJustZack/dotfiles#dotfiles
 ```
 
-After this, make a symbolic link to ``~/.config/nix`` using the following command.
-```bash
-mkdir -p ~/.config && ln -s "$(pwd)/nix" ~/.config/nix
-```
-
 Now, continue the following instructions according to the OS of the system.
 
 ### *Standalone Linux*
-
-Add the ``home-manager`` Nix upstream to the system.
-```bash
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-```
-
-Install ``home-manager`` using the Nix upstream added.
-```bash
-nix-shell '<home-manager>' -A install
-```
 
 Change the pretty hostname of the system with ``hostnamectl``.
 ```bash

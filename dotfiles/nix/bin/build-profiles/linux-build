@@ -5,14 +5,11 @@ RED='\033[1;31m'
 CLEAR='\033[0m'
 
 profile() {
-        PROFILE="${1}"
-
-        cd $HOME/.config/nix
-
         echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
-        home-manager switch --experimental-features "nix-command flakes" --flake .$PROFILE &&
+        ( home-manager switch --experimental-features "nix-command flakes" --flake ~/nix/#$(hostnamectl --pretty) ||
+          nix --experimental-features "nix-command flakes" run home-manager/release-23.11 -- switch --flake ~/nix/#$(hostnamectl --pretty) ) &&
                 echo "${GREEN}Finished building profile!${CLEAR}" ||
                 echo "${RED}Build Error${CLEAR}"
 }
 
-profile $@
+profile
