@@ -35,7 +35,7 @@ nix --experimental-features "nix-command flakes" flake init -t github:ThisJustZa
 
 After retrieving the clone, make the config directory and move the dotfiles using the following command.
 ```bash
-mkdir -p ~/.config/nix && rm -rf ~/.config/nix/* && mv nix/* ~/.config/nix && rm -rf nix
+rm -rf ~/.config/nix && mkdir -p ~/.config/nix && mv nix/* ~/.config/nix && rm -rf nix
 ```
 
 Now, continue the following instructions according to the OS of the system.
@@ -77,7 +77,11 @@ This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/
 ```bash
 ~/.config/nix/bin/build
 ```
-- If any of the scripts have a 'Permission denied' message, use the following command to grant permission on the target
+- If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.
 ```bash
-chmod 755 ~/.config/nix/bin/TARGET
+chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
+```
+- On MacOS, ``nix-darwin`` may want to repopulate the ``/etc/bashrc`` or other configuration files but be unable to and error, in which case the following command should be used or adapted accordingly.
+```bash
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
 ```
