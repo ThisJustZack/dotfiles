@@ -1,48 +1,57 @@
-{ pkgs, ... }: {
-        programs.starship = {
-                enable = true;
-                settings = {
-                        add_newline = false;
-                        line_break.disabled = false;
+{ lib, pkgs, config, ... }: 
+with lib;
+let cfg = config.features.command-line.starship;
 
-                        git_commit = {
-                                commit_hash_length = 5;
-                        };
+in {
+        options.features.command-line.starship = {
+                enable = mkEnableOption "starship";
+        };
+        config = mkIf cfg.enable {
+                programs.starship = {
+                        enable = true;
+                        settings = {
+                                add_newline = false;
+                                line_break.disabled = false;
 
-                        character = {
-                                success_symbol = "[➜](bold green)";
-                                error_symbol = "[➜](bold red)";
-                        };
+                                git_commit = {
+                                        commit_hash_length = 5;
+                                };
 
-                        username = {
-                                show_always = true;
-                                style_user = "bold bg:none fg:#7aa2f7";
-                                format = "[$user]($style)";
-                        };
+                                character = {
+                                        success_symbol = "[➜](bold green)";
+                                        error_symbol = "[➜](bold red)";
+                                };
 
-                        hostname = {
-                                ssh_only = false;
-                                style = "bold bg:none fg:#CDD6F4";
-                                format = "@[$hostname]($style) ";
-                                disabled = false;
-                        };
+                                username = {
+                                        show_always = true;
+                                        style_user = "bold bg:none fg:#7aa2f7";
+                                        format = "[$user]($style)";
+                                };
 
-                        directory = {     
-                                read_only = " ";
-                                truncation_length = 3;
-                                truncation_symbol = "./";
-                                style = "bold bg:none fg:#7aa2f7";
-                        };
+                                hostname = {
+                                        ssh_only = false;
+                                        style = "bold bg:none fg:#CDD6F4";
+                                        format = "@[$hostname]($style) ";
+                                        disabled = false;
+                                };
 
-                        rust.symbol = "[ ](red) ";
-                        nodejs = {
-                                version_format = "v$raw(blue)";
-                                symbol = "🤖";
-                                format = "via [$symbol ($version)]($style) ";
-                        };
-                        package = {
-                                symbol = "📦";
-                                format = "via [$symbol ($version)]($style) ";
+                                directory = {     
+                                        read_only = " ";
+                                        truncation_length = 3;
+                                        truncation_symbol = "./";
+                                        style = "bold bg:none fg:#7aa2f7";
+                                };
+
+                                rust.symbol = "[ ](red) ";
+                                nodejs = {
+                                        version_format = "v$raw(blue)";
+                                        symbol = "🤖";
+                                        format = "via [$symbol ($version)]($style) ";
+                                };
+                                package = {
+                                        symbol = "📦";
+                                        format = "via [$symbol ($version)]($style) ";
+                                };
                         };
                 };
         };

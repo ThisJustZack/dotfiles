@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
         imports = [
                 ../../../system/home-manager
+                ../../features
         ];
 
         home = {

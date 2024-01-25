@@ -1,21 +1,22 @@
 { config, pkgs, ... }: {
         imports = [
                 ../../../system/home-manager
-                ../../features/application-linking/darwin
+                ../../features
                 ../../features/editor/nvim
-                ../../features/terminal/kitty
-                ../../features/shell/zsh
-                ../../features/command-line/starship
         ];
 
         home = {
                 username = "zack";
                 homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
-                packages = with pkgs; []
-                        ++ callPackage ../../features/software-development/javascript {}
-                        ++ callPackage ../../features/software-development/nix {}
-                        ++ callPackage ../../features/software-development/rust {}
-                        ++ callPackage ../../features/software-development/typescript {}
-                        ++ callPackage ../../features/font {};
         };
+
+        features.application-linking.mac.enable = true;
+        features.terminal.kitty.enable = true;
+        features.shell.zsh.enable = true;
+        features.command-line.starship.enable = true;
+        features.software-development.javascript.enable = true;
+        features.software-development.nix.enable = true;
+        features.software-development.rust.enable = true;
+        features.software-development.typescript.enable = true;
+        features.font.fira-code.enable = true;
 }

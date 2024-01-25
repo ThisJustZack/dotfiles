@@ -3,7 +3,7 @@
 cd $HOME/.config/nix
 
 build() {
-	if [ -f /etc/NIXOS ]; then
+        if [ -f /etc/NIXOS ]; then
                 ./bin/build-profiles/nixos-build
         elif [ "$(uname)" == "Darwin" ]; then
                 ./bin/build-profiles/darwin-build
