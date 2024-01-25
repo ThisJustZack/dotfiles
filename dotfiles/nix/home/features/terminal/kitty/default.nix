@@ -14,5 +14,7 @@ in {
                                 size = 12;
                         };
                 };
+
+                features.font.fira-code.enable = true;
         };
 }

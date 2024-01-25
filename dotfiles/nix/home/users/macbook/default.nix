@@ -2,7 +2,6 @@
         imports = [
                 ../../../system/home-manager
                 ../../features
-                ../../features/editor/nvim
         ];
 
         home = {
@@ -18,5 +17,5 @@
         features.software-development.nix.enable = true;
         features.software-development.rust.enable = true;
         features.software-development.typescript.enable = true;
-        features.font.fira-code.enable = true;
+        features.editor.nvim.enable = true;
 }

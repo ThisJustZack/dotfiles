@@ -8,6 +8,7 @@
                 ./command-line/starship
                 ./communication-service/discord
                 ./editor/godot
+                ./editor/nvim
                 ./editor/obsidian
                 ./font/fira-code
                 ./gaming/bottles
