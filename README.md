@@ -4,8 +4,8 @@ This is my dotfile configuration that is used across all of my systems that have
 
 ## **Content**
 
-- ``Operating System``: MacOS, Linux-derived operating systems
-- ``Window Manager``: Default (MacOS), Default (Linux)
+- ``Operating System``: MacOS, NixOS, Linux-derived operating systems
+- ``Window Manager``: Default (MacOS), KDE Plasma (NixOS), Default (Linux)
 - ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim, VS Code
@@ -69,7 +69,7 @@ sudo scutil -set LocalHostName macbook
 
 ### *NixOS*
 
-There are currently no steps to follow. The ``bin`` files are capable of having a configuration should the [``nixos-build``](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/bin/build-profiles/nixos-build) script be maintained.
+There are no additional instructions to follow currently.
 
 ## **Install Profiles**
 
@@ -79,6 +79,16 @@ This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/
 ```bash
 ~/.config/nix/bin/build
 ```
+> [!IMPORTANT]
+> Within NixOS, it should be executed with the following command currently.
+> ```bash
+> ~/.config/nix/bin/build zack
+> ```
+> This may be changed to where it is internal and uses the following as a build profile.
+> ```bash
+> "$(whoami)@$(hostnamectl --static)"
+> ```
+
 > [!WARNING]
 > If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.
 > ```bash

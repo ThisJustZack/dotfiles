@@ -23,7 +23,7 @@
                 };
 
                 hyprland = {
-                        url = "github:spikespaz/hyprland-nix";
+                        url = "github:hyprwm/Hyprland";
                 };
         };
 
@@ -53,7 +53,6 @@
                                                         package = pkgs.nixFlakes;
                                                         settings = {
                                                                 trusted-users = [ "${user}" ];
-                                                                packages = pkgs.nix;
                                                                 experimental-features = [ "nix-command" "flakes" ];
                                                         };
                                                 };
@@ -62,6 +61,8 @@
                                                         description = "${user}";
                                                         extraGroups = [ "networkmanager" "wheel" ];
                                                         isNormalUser = true;
+                                                        shell = pkgs.zsh;
+                                                        ignoreShellProgramCheck = true;
                                                 };
                                         })
                                         home-manager.nixosModules.home-manager {

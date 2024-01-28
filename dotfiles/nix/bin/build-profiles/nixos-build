@@ -5,10 +5,12 @@ RED='\033[1;31m'
 CLEAR='\033[0m'
 
 profile() {
+        PROFILE="${1}"
+
         echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
-        nixos-rebuild --experimental-features "nix-command flakes" --flake .#$(hostnamectl --pretty) &&
+        sudo nixos-rebuild switch --flake .#$PROFILE --impure &&
                 echo "${GREEN}Finished building profile!${CLEAR}" ||
                 echo "${RED}Build Error${CLEAR}"
 }
 
-profile
+profile $@

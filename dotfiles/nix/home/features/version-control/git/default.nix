@@ -14,8 +14,8 @@ in {
                 };
 
                 home.packages = with pkgs; [
-                        github-desktop
                         gh
+                        github-desktop
                 ];
         };
 }
