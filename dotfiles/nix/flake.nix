@@ -41,7 +41,7 @@
                 # Nix configuration entrypoint
                 nixosConfigurations = {
                         "zack" = nixpkgs.lib.nixosSystem {
-                                system = "aarch64-darwin";
+                                system = "x86_64-linux";
                                 modules = [
                                         /etc/nixos/hardware-configuration.nix
                                         ./system/nixos
