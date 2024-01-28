@@ -26,7 +26,8 @@ Install ``nix`` with the following command if it is not installed already.
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
-- The source of this is maintained in the following [repository](https://github.com/DeterminateSystems/nix-installer).
+> [!NOTE]
+> The source of this is maintained in the following [repository](https://github.com/DeterminateSystems/nix-installer).
 
 This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
@@ -46,7 +47,8 @@ Change the pretty hostname of the system with ``hostnamectl``.
 ```bash
 hostnamectl set-hostname wsl --pretty
 ```
-- It is assumed that systemd is enabled on the system. To enable it in WSL, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine).
+> [!IMPORTANT]
+> It is assumed that systemd is enabled on the system. To enable it in WSL, follow this [guide](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/#how-can-you-get-systemd-on-your-machine).
 
 ### *MacOS*
 
@@ -77,11 +79,14 @@ This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/
 ```bash
 ~/.config/nix/bin/build
 ```
-- If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.
-```bash
-chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
-```
-- On MacOS, ``nix-darwin`` may want to repopulate the ``/etc/bashrc`` or other configuration files but be unable to and error, in which case the following command should be used or adapted accordingly.
-```bash
-sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
-```
+> [!WARNING]
+> If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.
+> ```bash
+> chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
+> ```
+
+> [!WARNING]
+> On MacOS, ``nix-darwin`` may want to repopulate the ``/etc/bashrc`` or other configuration files but be unable to and error, in which case the following command should be used or adapted accordingly.
+> ```bash
+> sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+> ```

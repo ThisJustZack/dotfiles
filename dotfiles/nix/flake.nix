@@ -15,6 +15,16 @@
                         url = "github:nix-community/home-manager/release-23.11";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+
+                kde-plasma = {
+                        url = "github:pjones/plasma-manager";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                        inputs.home-manager.follows = "home-manager";
+                };
+
+                hyprland = {
+                        url = "github:spikespaz/hyprland-nix";
+                };
         };
 
         outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }: 
@@ -28,6 +38,42 @@
                 };
         in
         {
+                # Nix configuration entrypoint
+                nixosConfigurations = {
+                        "zack" = nixpkgs.lib.nixosSystem {
+                                system = "aarch64-darwin";
+                                modules = [
+                                        /etc/nixos/hardware-configuration.nix
+                                        ./system/nixos
+                                        ({ pkgs, ... }: {
+                                                nixpkgs.config = nixpkgsConfig;
+                                                # nixpkgs.overlays = nixpkgsOverlays;
+
+                                                nix = {
+                                                        package = pkgs.nixFlakes;
+                                                        settings = {
+                                                                trusted-users = [ "${user}" ];
+                                                                packages = pkgs.nix;
+                                                                experimental-features = [ "nix-command" "flakes" ];
+                                                        };
+                                                };
+
+                                                users.users.${user} = {
+                                                        description = "${user}";
+                                                        extraGroups = [ "networkmanager" "wheel" ];
+                                                        isNormalUser = true;
+                                                };
+                                        })
+                                        home-manager.nixosModules.home-manager {
+                                                home-manager = {
+                                                        extraSpecialArgs = { inherit inputs; };
+                                                        users.${user} = import ./home/users/nix-desktop;
+                                                };
+                                        }
+                                ];
+                        };
+                };
+
                 # Darwin configuration entrypoint
                 darwinConfigurations = {
                         "macbook" = darwin.lib.darwinSystem {

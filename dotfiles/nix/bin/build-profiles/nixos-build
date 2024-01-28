@@ -6,7 +6,7 @@ CLEAR='\033[0m'
 
 profile() {
         echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
-        nixos-rebuild switch --experimental-features "nix-command flakes" --flake .#$(hostnamectl --pretty) &&
+        nixos-rebuild --experimental-features "nix-command flakes" --flake .#$(hostnamectl --pretty) &&
                 echo "${GREEN}Finished building profile!${CLEAR}" ||
                 echo "${RED}Build Error${CLEAR}"
 }
