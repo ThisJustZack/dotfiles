@@ -8,7 +8,7 @@ in {
         };
         config = mkIf cfg.enable {
                 home.packages = with pkgs; [
-                        nodejs_18
+                        nodejs_24
                 ];
         };
 }

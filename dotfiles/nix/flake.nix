@@ -2,9 +2,9 @@
         description = "Dotfiles configuration";
 
         inputs = {
-                nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+                nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
                 nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-                nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
+                nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
 
                 darwin = {
                         url = "github:lnl7/nix-darwin";
@@ -12,18 +12,8 @@
                 };
 
                 home-manager = {
-                        url = "github:nix-community/home-manager/release-23.11";
+                        url = "github:nix-community/home-manager/release-25.05";
                         inputs.nixpkgs.follows = "nixpkgs";
-                };
-
-                kde-plasma = {
-                        url = "github:pjones/plasma-manager";
-                        inputs.nixpkgs.follows = "nixpkgs";
-                        inputs.home-manager.follows = "home-manager";
-                };
-
-                hyprland = {
-                        url = "github:hyprwm/Hyprland";
                 };
         };
 
@@ -47,10 +37,10 @@
                                         ./system/nixos
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
-                                                # nixpkgs.overlays = nixpkgsOverlays;
+                                                nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
-                                                        package = pkgs.nixFlakes;
+                                                        package = pkgs.nixVersions.stable;
                                                         settings = {
                                                                 trusted-users = [ "${user}" ];
                                                                 experimental-features = [ "nix-command" "flakes" ];

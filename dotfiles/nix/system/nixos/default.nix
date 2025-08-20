@@ -1,53 +1,22 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
     imports = [ ./system-features ];
 
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/vda";
-    boot.loader.grub.useOSProber = true;
+    system-features.bootloader.grub.enable = true;
+    system-features.networking.enable = true;
 
     networking.hostName = "nixos";
 
-    networking.networkmanager.enable = true;
+    system-features.time-zone.us-east-coast.enable = true;
+    system-features.locale.us.enable = true;
 
-    time.timeZone = "America/New_York";
-    
-    i18n.defaultLocale = "en_US.UTF-8";
+    system-features.login-environment.sddm.enable = true;
+    system-features.desktop-environment.kde.enable = true;
 
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "en_US.UTF-8";
-        LC_IDENTIFICATION = "en_US.UTF-8";
-        LC_MEASUREMENT = "en_US.UTF-8";
-        LC_MONETARY = "en_US.UTF-8";
-        LC_NAME = "en_US.UTF-8";
-        LC_NUMERIC = "en_US.UTF-8";
-        LC_PAPER = "en_US.UTF-8";
-        LC_TELEPHONE = "en_US.UTF-8";
-        LC_TIME = "en_US.UTF-8";
-    };
+    system-features.printing.enable = true;
+    system.features.audio.pipewire.enable = true;
 
-    services.xserver.enable = true;
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.desktopManager.plasma5.enable = true;
+    services.displayManager.autoLogin.enable = true;
+    services.displayManager.autoLogin.user = "zack";
 
-    services.xserver = {
-        layout = "us";
-        xkbVariant = "";
-    };
-
-    services.printing.enable = true;
-
-    sound.enable = true;
-    hardware.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-    };
-
-    services.xserver.displayManager.autoLogin.enable = true;
-    services.xserver.displayManager.autoLogin.user = "zack";
-
-    system.stateVersion = "23.11";
+    system.stateVersion = "25.05";
 }

@@ -79,15 +79,6 @@ This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/
 ```bash
 ~/.config/nix/bin/build
 ```
-> [!IMPORTANT]
-> Within NixOS, the profile should be executed with the following command, until a solution is decided on for streamlining the process.
-> ```bash
-> ~/.config/nix/bin/build zack
-> ```
-> This may be changed to where it is internal and uses the following as a build profile for a solution, although that is not desired.
-> ```bash
-> "$(whoami)@$(hostnamectl --static)"
-> ```
 
 > [!WARNING]
 > If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.

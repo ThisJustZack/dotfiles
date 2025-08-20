@@ -5,7 +5,7 @@ RED='\033[1;31m'
 CLEAR='\033[0m'
 
 profile() {
-        PROFILE="${1}"
+        PROFILE="$(whoami)"
 
         echo "${GREEN}Building profile for $PROFILE...${CLEAR}"
         sudo nixos-rebuild switch --flake .#$PROFILE --impure &&
@@ -13,4 +13,4 @@ profile() {
                 echo "${RED}Build Error${CLEAR}"
 }
 
-profile $@
+profile

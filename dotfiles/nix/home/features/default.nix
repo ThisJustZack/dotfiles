@@ -22,7 +22,6 @@
                 ./peripheral/tablet/opendriver
                 ./shell/zsh
                 ./software-development/javascript
-                ./software-development/nix
                 ./software-development/rust
                 ./software-development/typescript
                 ./streaming-service/spotify
