@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.indent-blankline;
+let cfg = config.features.user.editor.nvim.plugins.indent-blankline;
 
 in {
-        options.features.editor.nvim.plugins.indent-blankline = {
+        options.features.user.editor.nvim.plugins.indent-blankline = {
                 enable = mkEnableOption "indent-blankline";
         };
         config = mkIf cfg.enable {

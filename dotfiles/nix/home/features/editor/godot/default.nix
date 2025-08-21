@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.godot;
+let cfg = config.features.user.editor.godot;
 
 in {
-        options.features.editor.godot = {
+        options.features.user.editor.godot = {
                 enable = mkEnableOption "godot";
         };
         config = mkIf cfg.enable {

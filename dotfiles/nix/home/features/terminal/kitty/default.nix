@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.terminal.kitty;
+let cfg = config.features.user.terminal.kitty;
 
 in {
-        options.features.terminal.kitty = {
+        options.features.user.terminal.kitty = {
                 enable = mkEnableOption "kitty";
         };
         config = mkIf cfg.enable {
@@ -15,6 +15,6 @@ in {
                         };
                 };
 
-                features.font.fira-code.enable = true;
+                features.user.font.fira-code.enable = true;
         };
 }

@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.software-development.javascript;
+let cfg = config.features.user.software-development.javascript;
 
 in {
-        options.features.software-development.javascript = {
+        options.features.user.software-development.javascript = {
                 enable = mkEnableOption "javascript";
         };
         config = mkIf cfg.enable {

@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.refactoring;
+let cfg = config.features.user.editor.nvim.plugins.refactoring;
 
 in {
-        options.features.editor.nvim.plugins.refactoring = {
+        options.features.user.editor.nvim.plugins.refactoring = {
                 enable = mkEnableOption "refactoring";
         };
         config = mkIf cfg.enable {

@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.terminal.template;
+let cfg = config.features.user.terminal.template;
 
 in {
-        options.features.terminal.template = {
+        options.features.user.terminal.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

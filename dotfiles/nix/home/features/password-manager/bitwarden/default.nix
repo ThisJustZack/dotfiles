@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.password-manager.bitwarden;
+let cfg = config.features.user.password-manager.bitwarden;
 
 in {
-        options.features.password-manager.bitwarden = {
+        options.features.user.password-manager.bitwarden = {
                 enable = mkEnableOption "bitwarden";
         };
         config = mkIf cfg.enable {

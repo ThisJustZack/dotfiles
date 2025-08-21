@@ -1,9 +1,9 @@
 { lib, pkgs, config, inputs, ... }: 
 with lib;
-let cfg = config.features.version-control.git;
+let cfg = config.features.user.version-control.git;
 
 in {
-        options.features.version-control.git = {
+        options.features.user.version-control.git = {
                 enable = mkEnableOption "git";
         };
         config = mkIf cfg.enable {

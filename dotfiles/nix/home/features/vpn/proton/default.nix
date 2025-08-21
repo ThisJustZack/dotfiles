@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.vpn.proton;
+let cfg = config.features.user.vpn.proton;
 
 in {
-        options.features.vpn.proton = {
+        options.features.user.vpn.proton = {
                 enable = mkEnableOption "proton";
         };
         config = mkIf cfg.enable {

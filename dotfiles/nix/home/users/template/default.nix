@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
         imports = [
-                ../../../system/home-manager
+                ../../../system/os/home-manager
                 ../../features
         ];
 

@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.password-manager.template;
+let cfg = config.features.user.password-manager.template;
 
 in {
-        options.features.password-manager.template = {
+        options.features.user.password-manager.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

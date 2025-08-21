@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.obsidian;
+let cfg = config.features.user.editor.obsidian;
 
 in {
-        options.features.editor.obsidian = {
+        options.features.user.editor.obsidian = {
                 enable = mkEnableOption "obsidian";
         };
         config = mkIf cfg.enable {

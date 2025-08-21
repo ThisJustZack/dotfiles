@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.surround;
+let cfg = config.features.user.editor.nvim.plugins.surround;
 
 in {
-        options.features.editor.nvim.plugins.surround = {
+        options.features.user.editor.nvim.plugins.surround = {
                 enable = mkEnableOption "surround";
         };
         config = mkIf cfg.enable {

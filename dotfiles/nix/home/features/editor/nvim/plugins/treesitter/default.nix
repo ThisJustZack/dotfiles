@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.treesitter;
+let cfg = config.features.user.editor.nvim.plugins.treesitter;
 
 in {
-        options.features.editor.nvim.plugins.treesitter = {
+        options.features.user.editor.nvim.plugins.treesitter = {
                 enable = mkEnableOption "treesitter";
         };
         config = mkIf cfg.enable {

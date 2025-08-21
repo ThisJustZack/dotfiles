@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
         imports = [
-                ../../../system/home-manager
+                ../../../system/os/home-manager
                 ../../features
         ];
 
@@ -9,13 +9,13 @@
                 homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
         };
 
-        features.application-linking.mac.enable = true;
-        features.terminal.kitty.enable = true;
-        features.shell.zsh.enable = true;
-        features.command-line.starship.enable = true;
-        features.software-development.javascript.enable = true;
-        features.software-development.nix.enable = true;
-        features.software-development.rust.enable = true;
-        features.software-development.typescript.enable = true;
-        features.editor.nvim.enable = true;
+        features.user.application-linking.mac.enable = true;
+        features.user.terminal.kitty.enable = true;
+        features.user.shell.zsh.enable = true;
+        features.user.command-line.starship.enable = true;
+        features.user.software-development.javascript.enable = true;
+        features.user.software-development.nix.enable = true;
+        features.user.software-development.rust.enable = true;
+        features.user.software-development.typescript.enable = true;
+        features.user.editor.nvim.enable = true;
 }

@@ -14,7 +14,7 @@ This is my dotfile configuration that is used across all of my systems that have
 ## **Structure**
 
 - ``bin``: Profile management shell scripts
-- ``system``: Shared system configuration entrypoints between NixOS, MacOS, and other Linux-derived operating systems
+- ``system``: Shared system environments between NixOS, MacOS, and other Linux-derived operating systems (``system/os``) with services and their respective configurations (``system/features``)
 - ``home``: User-defined environments (``home/users``) with applications and their respective configurations (``home/features``)
 - ``brew``: Homebrew configuration and environment for MacOS
 - ``pkgs``: Custom packages written for use in ``home``

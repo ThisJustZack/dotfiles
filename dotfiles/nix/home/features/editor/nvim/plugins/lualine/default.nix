@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.lualine;
+let cfg = config.features.user.editor.nvim.plugins.lualine;
 
 in {
-        options.features.editor.nvim.plugins.lualine = {
+        options.features.user.editor.nvim.plugins.lualine = {
                 enable = mkEnableOption "lualine";
         };
         config = mkIf cfg.enable {

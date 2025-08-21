@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.application-linking.standalone-linux;
+let cfg = config.features.user.application-linking.standalone-linux;
 
 in {
-        options.features.application-linking.standalone-linux = {
+        options.features.user.application-linking.standalone-linux = {
                 enable = mkEnableOption "standalone-linux";
         };
         config = mkIf cfg.enable {

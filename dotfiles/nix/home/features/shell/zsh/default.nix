@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.shell.zsh;
+let cfg = config.features.user.shell.zsh;
 
 in {
-        options.features.shell.zsh = {
+        options.features.user.shell.zsh = {
                 enable = mkEnableOption "zsh";
         };
         config = mkIf cfg.enable {

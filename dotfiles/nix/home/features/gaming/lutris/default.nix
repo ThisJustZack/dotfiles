@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.gaming.lutris;
+let cfg = config.features.user.gaming.lutris;
 
 in {
-        options.features.gaming.lutris = {
+        options.features.user.gaming.lutris = {
                 enable = mkEnableOption "lutris";
         };
         config = mkIf cfg.enable {

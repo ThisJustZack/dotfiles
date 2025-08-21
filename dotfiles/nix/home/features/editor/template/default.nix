@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.template;
+let cfg = config.features.user.editor.template;
 
 in {
-        options.features.editor.template = {
+        options.features.user.editor.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

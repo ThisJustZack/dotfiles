@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.communication-service.template;
+let cfg = config.features.user.communication-service.template;
 
 in {
-        options.features.communication-service.template = {
+        options.features.user.communication-service.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

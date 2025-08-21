@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.trouble;
+let cfg = config.features.user.editor.nvim.plugins.trouble;
 
 in {
-        options.features.editor.nvim.plugins.trouble = {
+        options.features.user.editor.nvim.plugins.trouble = {
                 enable = mkEnableOption "trouble";
         };
         config = mkIf cfg.enable {

@@ -34,7 +34,7 @@
                                 system = "x86_64-linux";
                                 modules = [
                                         /etc/nixos/hardware-configuration.nix
-                                        ./system/nixos
+                                        ./system/os/nixos
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 nixpkgs.overlays = nixpkgsOverlays;
@@ -70,7 +70,7 @@
                         "macbook" = darwin.lib.darwinSystem {
                                 system = "aarch64-darwin";
                                 modules = [
-                                        ./system/darwin
+                                        ./system/os/darwin
                                         ./brew
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;

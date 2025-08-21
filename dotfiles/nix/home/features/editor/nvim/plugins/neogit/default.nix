@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.neogit;
+let cfg = config.features.user.editor.nvim.plugins.neogit;
 
 in {
-        options.features.editor.nvim.plugins.neogit = {
+        options.features.user.editor.nvim.plugins.neogit = {
                 enable = mkEnableOption "neogit";
         };
         config = mkIf cfg.enable {

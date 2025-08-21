@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.communication-service.discord;
+let cfg = config.features.user.communication-service.discord;
 
 in {
-        options.features.communication-service.discord = {
+        options.features.user.communication-service.discord = {
                 enable = mkEnableOption "discord";
         };
         config = mkIf cfg.enable {

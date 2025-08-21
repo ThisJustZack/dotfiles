@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.gaming.steam;
+let cfg = config.features.user.gaming.steam;
 
 in {
-        options.features.gaming.steam = {
+        options.features.user.gaming.steam = {
                 enable = mkEnableOption "steam";
         };
         config = mkIf cfg.enable {

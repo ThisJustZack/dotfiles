@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.template;
+let cfg = config.features.user.editor.nvim.plugins.template;
 
 in {
-        options.features.editor.nvim.plugins.template = {
+        options.features.user.editor.nvim.plugins.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

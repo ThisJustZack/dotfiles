@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.gaming.mangohud;
+let cfg = config.features.user.gaming.mangohud;
 
 in {
-        options.features.gaming.mangohud = {
+        options.features.user.gaming.mangohud = {
                 enable = mkEnableOption "mangohud";
         };
         config = mkIf cfg.enable {

@@ -1,11 +1,11 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.application-linking.mac;
+let cfg = config.features.user.application-linking.mac;
 
 in {
         disabledModules = [ "targets/darwin/linkapps.nix" ];
         
-        options.features.application-linking.mac = {
+        options.features.user.application-linking.mac = {
                 enable = mkEnableOption "mac";
         };
         config = mkIf cfg.enable {

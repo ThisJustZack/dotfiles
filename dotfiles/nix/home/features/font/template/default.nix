@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.font.template;
+let cfg = config.features.user.font.template;
 
 in {
-        options.features.font.template = {
+        options.features.user.font.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

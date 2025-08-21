@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.software-development.nix;
+let cfg = config.features.user.software-development.nix;
 
 in {
-        options.features.software-development.nix = {
+        options.features.user.software-development.nix = {
                 enable = mkEnableOption "nix";
         };
         config = mkIf cfg.enable {

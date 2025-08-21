@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.streaming-service.spotify;
+let cfg = config.features.user.streaming-service.spotify;
 
 in {
-        options.features.streaming-service.spotify = {
+        options.features.user.streaming-service.spotify = {
                 enable = mkEnableOption "spotify";
         };
         config = mkIf cfg.enable {

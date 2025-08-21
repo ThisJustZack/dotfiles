@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.comment;
+let cfg = config.features.user.editor.nvim.plugins.comment;
 
 in {
-        options.features.editor.nvim.plugins.comment = {
+        options.features.user.editor.nvim.plugins.comment = {
                 enable = mkEnableOption "comment";
         };
         config = mkIf cfg.enable {

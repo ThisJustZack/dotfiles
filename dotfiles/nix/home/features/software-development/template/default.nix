@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.software-development.template;
+let cfg = config.features.user.software-development.template;
 
 in {
-        options.features.software-development.template = {
+        options.features.user.software-development.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

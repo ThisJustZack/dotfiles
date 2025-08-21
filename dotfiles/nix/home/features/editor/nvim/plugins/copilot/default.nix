@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.copilot;
+let cfg = config.features.user.editor.nvim.plugins.copilot;
 
 in {
-        options.features.editor.nvim.plugins.copilot = {
+        options.features.user.editor.nvim.plugins.copilot = {
                 enable = mkEnableOption "copilot";
         };
         config = mkIf cfg.enable {

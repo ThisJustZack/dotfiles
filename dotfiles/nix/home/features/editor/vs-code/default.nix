@@ -1,11 +1,11 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.vs-code;
+let cfg = config.features.user.editor.vs-code;
 
 in {
         imports = [ ./extensions ];
 
-        options.features.editor.vs-code = {
+        options.features.user.editor.vs-code = {
                 enable = mkEnableOption "vs-code";
         };
         config = mkIf cfg.enable {
@@ -13,8 +13,8 @@ in {
                         enable = true;
                 };
 
-                mkIf config.features.editor.godot.enable {
-                        features.editor.vs-code.extensions.csharp.enable = true;
+                mkIf config.features.user.editor.godot.enable {
+                        features.user.editor.vs-code.extensions.csharp.enable = true;
                 };
         };
 }

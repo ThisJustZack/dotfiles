@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.telescope;
+let cfg = config.features.user.editor.nvim.plugins.telescope;
 
 in {
-        options.features.editor.nvim.plugins.telescope = {
+        options.features.user.editor.nvim.plugins.telescope = {
                 enable = mkEnableOption "telescope";
         };
         config = mkIf cfg.enable {

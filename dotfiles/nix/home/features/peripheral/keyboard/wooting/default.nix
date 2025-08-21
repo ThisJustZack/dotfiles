@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.peripheral.keyboard.wootility;
+let cfg = config.features.user.peripheral.keyboard.wootility;
 
 in {
-        options.features.peripheral.keyboard.wootility = {
+        options.features.user.peripheral.keyboard.wootility = {
                 enable = mkEnableOption "wootility";
         };
         config = mkIf cfg.enable {

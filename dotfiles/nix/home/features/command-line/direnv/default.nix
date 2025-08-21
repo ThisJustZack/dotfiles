@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.command-line.direnv;
+let cfg = config.features.user.command-line.direnv;
 
 in {
-        options.features.command-line.direnv = {
+        options.features.user.command-line.direnv = {
                 enable = mkEnableOption "direnv";
         };
         config = mkIf cfg.enable {

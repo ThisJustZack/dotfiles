@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.gaming.template;
+let cfg = config.features.user.gaming.template;
 
 in {
-        options.features.gaming.template = {
+        options.features.user.gaming.template = {
                 enable = mkEnableOption "template";
         };
         config = mkIf cfg.enable {

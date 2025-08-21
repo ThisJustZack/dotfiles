@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.gaming.gamemode;
+let cfg = config.features.user.gaming.gamemode;
 
 in {
-        options.features.gaming.gamemode = {
+        options.features.user.gaming.gamemode = {
                 enable = mkEnableOption "gamemode";
         };
         config = mkIf cfg.enable {

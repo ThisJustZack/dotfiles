@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.peripheral.tablet.opendriver;
+let cfg = config.features.user.peripheral.tablet.opendriver;
 
 in {
-        options.features.peripheral.tablet.opendriver = {
+        options.features.user.peripheral.tablet.opendriver = {
                 enable = mkEnableOption "opendriver";
         };
         config = mkIf cfg.enable {

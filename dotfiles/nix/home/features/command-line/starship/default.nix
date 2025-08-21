@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.command-line.starship;
+let cfg = config.features.user.command-line.starship;
 
 in {
-        options.features.command-line.starship = {
+        options.features.user.command-line.starship = {
                 enable = mkEnableOption "starship";
         };
         config = mkIf cfg.enable {

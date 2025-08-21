@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.browser.firefox;
+let cfg = config.features.user.browser.firefox;
 
 in {
-        options.features.browser.firefox = {
+        options.features.user.browser.firefox = {
                 enable = mkEnableOption "firefox";
         };
         config = mkIf cfg.enable {

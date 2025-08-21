@@ -1,11 +1,11 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.vs-code.extensions.csharp;
+let cfg = config.features.user.editor.vs-code.extensions.csharp;
 
 in {
         imports = [ ./extensions ];
 
-        options.features.editor.vs-code.extensions.csharp = {
+        options.features.user.editor.vs-code.extensions.csharp = {
                 enable = mkEnableOption "csharp";
         };
         config = mkIf cfg.enable {

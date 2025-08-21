@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.software-development.rust;
+let cfg = config.features.user.software-development.rust;
 
 in {
-        options.features.software-development.rust = {
+        options.features.user.software-development.rust = {
                 enable = mkEnableOption "rust";
         };
         config = mkIf cfg.enable {

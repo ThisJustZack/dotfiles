@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.editor.nvim.plugins.lspconfig;
+let cfg = config.features.user.editor.nvim.plugins.lspconfig;
 
 in {
-        options.features.editor.nvim.plugins.lspconfig = {
+        options.features.user.editor.nvim.plugins.lspconfig = {
                 enable = mkEnableOption "lspconfig";
         };
         config = mkIf cfg.enable {
@@ -22,15 +22,15 @@ in {
                                                         require('cmp_nvim_lsp').default_capabilities()
                                                 )
                                         '' +
-                                        optionalString config.features.software-development.nix.enable ''
+                                        optionalString config.features.user.software-development.nix.enable ''
                                                 lspconfig.rnix.setup {
                                                 }
                                         '' +
-                                        optionalString config.features.software-development.rust.enable ''
+                                        optionalString config.features.user.software-development.rust.enable ''
                                                 lspconfig.rust_analyzer.setup {
                                                 }
                                         '' +
-                                        optionalString config.features.software-development.typescript.enable ''
+                                        optionalString config.features.user.software-development.typescript.enable ''
                                                 lspconfig.tsserver.setup {
                                                         cmd = { "typescript-language-server", "--stdio", "--tsserver-path=tsserver" }
                                                 }

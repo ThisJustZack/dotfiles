@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.browser.brave;
+let cfg = config.features.user.browser.brave;
 
 in {
-        options.features.browser.brave = {
+        options.features.user.browser.brave = {
                 enable = mkEnableOption "brave";
         };
         config = mkIf cfg.enable {
