@@ -11,6 +11,6 @@ in {
                         enable = true;
                         withUSM = true;
                         xwayland.enable = true;
-                }
+                };
         };
 }
