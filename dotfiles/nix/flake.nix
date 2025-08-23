@@ -18,10 +18,11 @@
         };
 
         outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }: 
-        let
+        let 
+                inherit (self) outputs;
                 user = "zack";
 
-                nixpkgsOverlays = import ./overlays { inherit inputs; };
+                nixpkgsOverlays = import ./overlays { inherit inputs outputs; };
                 nixpkgsConfig = {
                         allowUnfree = true;
                         allowUnfreePredicate = (_: true);
@@ -37,7 +38,7 @@
                                         ./system/os/nixos
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
-                                                nixpkgs.overlays = nixpkgsOverlays;
+                                                #nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
                                                         package = pkgs.nixVersions.stable;

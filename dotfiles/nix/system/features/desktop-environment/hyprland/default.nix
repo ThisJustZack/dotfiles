@@ -9,7 +9,7 @@ in {
         config = mkIf cfg.enable {
                 programs.hyprland = {
                         enable = true;
-                        withUSM = true;
+                        withUWSM = true;
                         xwayland.enable = true;
                 };
         };

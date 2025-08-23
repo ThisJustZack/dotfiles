@@ -27,8 +27,5 @@
                 ./streaming-service/spotify
                 ./terminal/kitty
                 ./vpn/proton
-                ./window-manager/hyprland
-                ./window-manager/kde-plasma
-                ./window-manager/mutter
         ];
 }

@@ -9,7 +9,7 @@ in {
         config = mkIf cfg.enable {
                 boot.loader.grub = {
                         enable = true;
-                        device = "/dev/vda";
+                        device = "/dev/sda";
                         useOSProber = true;
                 };
         };

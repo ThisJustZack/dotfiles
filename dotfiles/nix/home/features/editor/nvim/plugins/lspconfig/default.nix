@@ -22,10 +22,6 @@ in {
                                                         require('cmp_nvim_lsp').default_capabilities()
                                                 )
                                         '' +
-                                        optionalString config.features.user.software-development.nix.enable ''
-                                                lspconfig.rnix.setup {
-                                                }
-                                        '' +
                                         optionalString config.features.user.software-development.rust.enable ''
                                                 lspconfig.rust_analyzer.setup {
                                                 }

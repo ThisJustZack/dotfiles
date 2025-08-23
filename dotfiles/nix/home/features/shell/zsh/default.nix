@@ -9,7 +9,7 @@ in {
         config = mkIf cfg.enable {
                 programs.zsh = {
                         enable = true;
-                        enableAutosuggestions = true;
+                        autosuggestion.enable = true;
                         enableCompletion = true;
                         syntaxHighlighting.enable = true;
                 };

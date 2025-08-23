@@ -12,7 +12,7 @@
     features.system.login-environment.sddm.enable = true;
     features.system.desktop-environment.kde.enable = true;
 
-    features.system.printing.enable = true;
+    features.system.printing.cups.enable = true;
     features.system.audio.pipewire.enable = true;
 
     services.displayManager.autoLogin.enable = true;
