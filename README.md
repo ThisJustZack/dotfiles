@@ -22,12 +22,8 @@ This is my dotfile configuration that is used across all of my systems that have
 
 ## **Install Dependencies**
 
-Install ``nix`` with the following command if it is not installed already.
-```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
-> [!NOTE]
-> The source of this is maintained in the following [repository](https://github.com/DeterminateSystems/nix-installer).
+> [!IMPORTANT]
+> If not using NixOS, then install the [Determinate Systems version of Nix](https://docs.determinate.systems/) for the corresponding system.
 
 This configuration uses a template flake for simplifying cloning so that it only requires the ``nix`` command.
 ```bash
