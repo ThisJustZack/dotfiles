@@ -13,9 +13,6 @@
         features.user.terminal.kitty.enable = true;
         features.user.shell.zsh.enable = true;
         features.user.command-line.starship.enable = true;
-        features.user.software-development.javascript.enable = true;
-        features.user.software-development.nix.enable = true;
         features.user.software-development.rust.enable = true;
-        features.user.software-development.typescript.enable = true;
         features.user.editor.nvim.enable = true;
 }

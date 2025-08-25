@@ -1,12 +1,10 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-        services.nix-daemon.enable = true;
-
         networking = {
                 hostName = "macbook";
         };
 
         security = {
-                pam.enableSudoTouchIdAuth = true;
+                pam.services.sudo_local.touchIdAuth = true;
         };
 
         system = {

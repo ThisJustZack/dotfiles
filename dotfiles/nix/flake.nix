@@ -7,7 +7,7 @@
                 nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
 
                 darwin = {
-                        url = "github:lnl7/nix-darwin";
+                        url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
                         inputs.nixpkgs.follows = "nixpkgs-darwin";
                 };
 
@@ -71,6 +71,8 @@
                         "macbook" = darwin.lib.darwinSystem {
                                 system = "aarch64-darwin";
                                 modules = [
+                                        { nix.enable = false;
+                                          system.primaryUser = "zack"; }
                                         ./system/os/darwin
                                         ./brew
                                         ({ pkgs, ... }: {
@@ -78,7 +80,7 @@
                                                 # nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
-                                                        package = pkgs.nixFlakes;
+                                                        package = pkgs.nixVersions.stable;
                                                         settings = {
                                                                 trusted-users = [ "${user}" ];
                                                                 experimental-features = [ "nix-command" "flakes" ];

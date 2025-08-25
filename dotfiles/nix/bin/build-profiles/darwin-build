@@ -6,7 +6,7 @@ CLEAR='\033[0m'
 
 profile() {
         echo "${GREEN}Building profile for macbook...${CLEAR}"
-        nix run nix-darwin -- switch --flake . &&
+        sudo nix run nix-darwin -- switch --flake . &&
                 echo "${GREEN}Finished building profile for macbook!${CLEAR}" ||
                 echo "${RED}Build Error${CLEAR}"
 }
