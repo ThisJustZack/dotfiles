@@ -72,9 +72,9 @@ There are no additional instructions to follow currently.
 
 ## **Install Profiles**
 
-Now that the dependencies have been installed, the profiles established within [``flake.nix``](.dotfiles/nix/flake.nix) from the template can be installed.
+Now that the dependencies have been installed, the profiles established within [``flake.nix``](./dotfiles/nix/flake.nix) from the template can be installed.
 
-This is streamlined through a [script](.dotfiles/nix/bin/build) found in ``bin``.
+This is streamlined through a [script](./dotfiles/nix/bin/build) found in ``bin``.
 However, if this is the first time on the system, then the scripts should have a ``Permission denied`` message appear. Use the following script to grant permission to the scripts.
 ```bash
 chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
