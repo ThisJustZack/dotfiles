@@ -38,7 +38,7 @@
                                         ./system/os/nixos
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
-                                                #nixpkgs.overlays = nixpkgsOverlays;
+                                                nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
                                                         package = pkgs.nixVersions.stable;
@@ -77,7 +77,7 @@
                                         ./brew
                                         ({ pkgs, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
-                                                # nixpkgs.overlays = nixpkgsOverlays;
+                                                nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
                                                         package = pkgs.nixVersions.stable;
@@ -111,7 +111,7 @@
                                 pkgs = import nixpkgs {
                                         inherit system;
                                         config = nixpkgsConfig;
-                                        # overlays = nixpkgsOverlays;
+                                        overlays = nixpkgsOverlays;
                                 };
                         in
                         home-manager.lib.homeManagerConfiguration {

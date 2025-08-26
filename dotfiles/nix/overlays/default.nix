@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+let
         additions = final: _prev: import ../pkgs final.pkgs;
 
         modifications = final: prev: {
@@ -9,4 +10,9 @@
                         inherit (final) system config;
                 };
         };
-}
+
+in [
+        additions
+        modifications
+        unstable-packages
+]
