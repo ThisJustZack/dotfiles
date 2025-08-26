@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd $HOME/.config/nix
+
+./bin/cleanup-routines/nix-build-cleanup

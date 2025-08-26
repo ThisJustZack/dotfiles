@@ -36,6 +36,9 @@ rm -rf ~/.config/nix && mkdir -p ~/.config/nix && mv nix/* ~/.config/nix && rm -
 ```
 
 Now, continue the following instructions according to the OS of the system.
+- [Standalone Linux](#standalone-linux)
+- [MacOS](#macos)
+- [NixOS](#nixos)
 
 ### *Standalone Linux*
 
@@ -69,21 +72,34 @@ There are no additional instructions to follow currently.
 
 ## **Install Profiles**
 
-Now that the dependencies have been installed, the profiles established within [``flake.nix``](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/flake.nix) from the template can be installed.
+Now that the dependencies have been installed, the profiles established within [``flake.nix``](.dotfiles/nix/flake.nix) from the template can be installed.
 
-This is streamlined through a [script](https://github.com/ThisJustZack/dotfiles/blob/main/dotfiles/nix/bin/build) found in ``bin``. It is executed with the following command.
+This is streamlined through a [script](.dotfiles/nix/bin/build) found in ``bin``.
+However, if this is the first time on the system, then the scripts should have a ``Permission denied`` message appear. Use the following script to grant permission to the scripts.
+```bash
+chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
+```
+After the permissions are granted, the build script can be executed with the following command.
 ```bash
 ~/.config/nix/bin/build
 ```
-
-> [!WARNING]
-> If any of the scripts have a ``Permission denied`` message, use the following command to grant permission.
-> ```bash
-> chmod 755 ~/.config/nix/bin/build && chmod 755 ~/.config/nix/bin/build-profiles/*
-> ```
 
 > [!WARNING]
 > On MacOS, ``nix-darwin`` may want to repopulate the ``/etc/bashrc`` or other configuration files but be unable to and error, in which case the following command should be used or adapted accordingly.
 > ```bash
 > sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
 > ```
+
+## **Cleanup Profiles**
+
+After running the build, there may be a need to do some sort of cleanup. For example, Nix keeps files for the runtime builds and does not delete them unless prompted to.
+
+This is streamlined through a [script](./dotfiles/nix/bin/clean) found in ``bin``.
+However, if this is the first time on the system, then the scripts should have a ``Permission denied`` message appear. Use the following script to grant permission to the scripts.
+```bash
+chmod 755 ~/.config/nix/bin/clean && chmod 755 ~/.config/nix/bin/cleanup-routines/*
+```
+After the permissions are granted, the build script can be executed with the following command.
+```bash
+~/.config/nix/bin/clean
+```
