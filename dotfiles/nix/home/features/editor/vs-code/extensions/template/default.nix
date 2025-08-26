@@ -3,8 +3,6 @@ with lib;
 let cfg = config.features.user.editor.vs-code.extensions.csharp;
 
 in {
-        imports = [ ./extensions ];
-
         options.features.user.editor.vs-code.extensions.csharp = {
                 enable = mkEnableOption "csharp";
         };
