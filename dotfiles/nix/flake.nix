@@ -22,7 +22,7 @@
                 inherit (self) outputs;
                 user = "zack";
 
-                nixpkgsOverlays = import ./overlays { inherit inputs outputs; };
+                nixpkgsOverlays = import ./overlays { inherit inputs outputs nixpkgsConfig; };
                 nixpkgsConfig = {
                         allowUnfree = true;
                         allowUnfreePredicate = (_: true);
