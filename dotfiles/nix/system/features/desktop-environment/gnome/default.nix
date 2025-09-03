@@ -7,6 +7,10 @@ in {
                 enable = mkEnableOption "gnome";
         };
         config = mkIf cfg.enable {
-                services.desktopManager.gnome.enable = true;
+                services.xserver = {
+                        enable = true;
+                        desktopManager.gnome.enable = true;
+                };
+                #services.desktopManager.gnome.enable = true; # 25.11
         };
 }

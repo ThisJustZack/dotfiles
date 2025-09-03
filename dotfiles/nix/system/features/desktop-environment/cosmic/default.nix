@@ -7,7 +7,9 @@ in {
                 enable = mkEnableOption "cosmic";
         };
         config = mkIf cfg.enable {
-                services.desktopManager.cosmic.enable = true;
-                services.desktopManager.cosmic.xwayland.enable = true;
+                services.desktopManager.cosmic = {
+                        enable = true;
+                        xwayland.enable = true;
+                };
         };
 }

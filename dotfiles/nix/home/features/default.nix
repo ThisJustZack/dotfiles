@@ -10,6 +10,7 @@
                 ./editor/godot
                 ./editor/nvim
                 ./editor/obsidian
+                ./editor/vs-code
                 ./font/fira-code
                 ./gaming/bottles
                 ./gaming/gamemode
@@ -27,6 +28,7 @@
                 ./software-development/typescript
                 ./streaming-service/spotify
                 ./terminal/kitty
+                ./version-control/git
                 ./vpn/proton
         ];
 }

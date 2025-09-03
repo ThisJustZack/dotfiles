@@ -7,10 +7,13 @@ in {
                 enable = mkEnableOption "hyprland";
         };
         config = mkIf cfg.enable {
-                programs.hyprland = {
+                xdg.portal = {
                         enable = true;
-                        withUWSM = true;
-                        xwayland.enable = true;
+                        extraPortals = [
+                                pkgs.xdg-desktop-portal-hyprland
+                        ];
                 };
+
+                programs.hyprland.enable = true;
         };
 }

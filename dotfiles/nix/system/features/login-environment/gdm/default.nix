@@ -7,6 +7,7 @@ in {
                 enable = mkEnableOption "gdm";
         };
         config = mkIf cfg.enable {
-                services.displayManager.gdm.enable = true;
+                services.xserver.gdm.enable = true;
+                #services.displayManager.gdm.enable = true; # 25.11
         };
 }

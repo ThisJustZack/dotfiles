@@ -13,7 +13,7 @@ in {
                         programs.vscode.enable = true;
                 })
 
-                (mkIf cfg.enable && config.features.user.editor.godot.enable {
+                (mkIf (cfg.enable && config.features.user.editor.godot.enable) {
                         features.user.editor.vs-code.extensions.csharp.enable = true;
                 })
         ];

@@ -12,11 +12,8 @@
     features.system.login-environment.sddm.enable = true;
     features.system.desktop-environment.kde.enable = true;
 
-    features.system.printing.cups.enable = true;
-    features.system.audio.pipewire.enable = true;
-
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "zack";
+    features.system.printing.enable = true;
+    features.system.audio.enable = true;
 
     system.stateVersion = "25.05";
 }
