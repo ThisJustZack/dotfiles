@@ -28,7 +28,7 @@
                         features.user.browser.brave.enable = true;
                         features.user.browser.firefox.enable = true;
                 }
-                (lib.mkIf osConfig.functions.system.isGamingMachine.enable then {
+                (lib.mkIf osConfig.functions.system.isGamingMachine.enable {
                         features.user.gaming.bottles.enable = true;
                         features.user.gaming.gamemode.enable = true;
                         features.user.gaming.lutris.enable = true;
