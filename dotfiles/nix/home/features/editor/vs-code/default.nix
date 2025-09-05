@@ -3,8 +3,6 @@ with lib;
 let cfg = config.features.user.editor.vs-code;
 
 in {
-        imports = [ ./extensions ];
-
         options.features.user.editor.vs-code = {
                 enable = mkEnableOption "vs-code";
         };
