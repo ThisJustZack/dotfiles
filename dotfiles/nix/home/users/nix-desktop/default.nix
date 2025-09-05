@@ -1,7 +1,7 @@
 { pkgs, config, osConfig ? {}, lib ? pkgs.lib, ... }:
 with lib;
 let
-        user = "zack;
+        user = "zack";
         isGamingMachine =
                 hasAttrByPath [ "functions" "system" "isGamingMachine" "enable" ] osConfig
                 && (osConfig.functions.system.isGamingMachine.enable or false);
@@ -14,7 +14,7 @@ in {
         config = mkMerge [
                 {
                         home = {
-                                username = "${user}";
+                                username = user;
                                 homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
                         };
 

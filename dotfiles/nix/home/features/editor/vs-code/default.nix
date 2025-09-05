@@ -9,7 +9,7 @@ in {
         config = mkIf cfg.enable {
                 programs.vscode = {
                         enable = true;
-                        extensions = with pkgs.vscode-extensions; [
+                        profiles.default.extensions = with pkgs.vscode-extensions; [
                                 ms-vscode-remote.remote-containers
                         ];
                 };
