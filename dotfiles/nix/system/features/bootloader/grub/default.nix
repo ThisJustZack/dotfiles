@@ -7,10 +7,17 @@ in {
                 enable = mkEnableOption "grub";
         };
         config = mkIf cfg.enable {
-                boot.loader.grub = {
-                        enable = true;
-                        device = "/dev/sda";
-                        useOSProber = true;
+                boot.loader = {
+                        grub = {
+                                enable = true;
+                                efiSupport = true;
+                                device = "nodev";
+                                useOSProber = true;
+                        };
+                        efi = {
+                                canTouchEfiVariables = true;
+                                efiSysMountPoint = "/boot/efi";
+                        };
                 };
         };
 }

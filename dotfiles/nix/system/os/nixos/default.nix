@@ -1,5 +1,8 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-    imports = [ ../../features ];
+    imports = [
+        ../../features
+        ../../functions
+    ];
 
     features.system.bootloader.grub.enable = true;
     features.system.networking.enable = true;
@@ -14,6 +17,9 @@
 
     features.system.printing.enable = true;
     features.system.audio.enable = true;
+
+    functions.system.isGamingMachine.enable = true;
+    functions.system.hasVirtualizationCapability.enable = true;
 
     system.stateVersion = "25.05";
 }

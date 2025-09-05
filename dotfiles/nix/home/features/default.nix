@@ -17,9 +17,9 @@
                 ./gaming/lutris
                 ./gaming/mangohud
                 ./gaming/protonup
-                ./gaming/steam
                 ./password-manager/bitwarden
                 ./peripheral/keyboard/wooting
+                ./peripheral/printer/epson-et8550
                 ./peripheral/tablet/opendriver
                 ./shell/zsh
                 ./software-development/javascript

@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }: 
 with lib;
-let cfg = config.features.user.gaming.steam;
+let cfg = config.functions.system.isGamingMachine;
 
 in {
-        options.features.user.gaming.steam = {
-                enable = mkEnableOption "steam";
+        options.functions.system.isGamingMachine = {
+                enable = mkEnableOption "isGamingMachine";
         };
         config = mkIf cfg.enable {
                 programs.steam = {

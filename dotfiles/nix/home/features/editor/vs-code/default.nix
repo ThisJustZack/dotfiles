@@ -8,13 +8,12 @@ in {
         options.features.user.editor.vs-code = {
                 enable = mkEnableOption "vs-code";
         };
-        config = mkMerge [
-                (mkIf cfg.enable {
-                        programs.vscode.enable = true;
-                })
-
-                (mkIf (cfg.enable && config.features.user.editor.godot.enable) {
-                        features.user.editor.vs-code.extensions.csharp.enable = true;
-                })
-        ];
+        config = mkIf cfg.enable {
+                programs.vscode = {
+                        enable = true;
+                        extensions = with pkgs.vscode-extensions; [
+                                ms-vscode-remote.remote-containers
+                        ];
+                };
+        };
 }
