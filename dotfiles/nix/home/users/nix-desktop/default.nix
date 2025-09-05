@@ -1,14 +1,21 @@
-{ config, pkgs, ... }: {
+{ pkgs, config, osConfig ? {}, lib ? pkgs.lib, ... }:
+with lib;
+let
+        user = "zack;
+        isGamingMachine =
+                hasAttrByPath [ "functions" "system" "isGamingMachine" "enable" ] osConfig
+                && (osConfig.functions.system.isGamingMachine.enable or false);
+in {
         imports = [
                 ../../../system/os/home-manager
                 ../../features
         ];
 
-        config = lib.mkMerge [
+        config = mkMerge [
                 {
                         home = {
-                                username = "zack";
-                                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+                                username = "${user}";
+                                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
                         };
 
                         features.user.terminal.kitty.enable = true;
@@ -28,7 +35,7 @@
                         features.user.browser.brave.enable = true;
                         features.user.browser.firefox.enable = true;
                 }
-                (lib.mkIf osConfig.functions.system.isGamingMachine.enable {
+                (mkIf isGamingMachine {
                         features.user.gaming.bottles.enable = true;
                         features.user.gaming.gamemode.enable = true;
                         features.user.gaming.lutris.enable = true;
