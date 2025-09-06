@@ -17,6 +17,7 @@ in {
                                         setSocketVariable = true;
                                 };
                         };
+                        waydroid.enable = true;
                 };
         };
 }
