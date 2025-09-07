@@ -1,3 +1,3 @@
-pkgs: { # {pkgs ? import <nixpkgs> {}, ...}: rec
-# ex = pkgs.callPackage ./ex { };
+{ pkgs ? import <nixpkgs> {}, ...}: rec {
+     optcg-sim = pkgs.callPackage ./optcg-sim { };
 }

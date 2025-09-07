@@ -1,0 +1,40 @@
+#!@bash@/bin/bash
+set -euo pipefail
+
+USERDIR="${XDG_DATA_HOME:-$HOME/.local/share}/optcg-sim"
+SYSTEMDIR="@out@/opt/OPTCGSim"
+USERGAME="$USERDIR/OPTCGSim"
+USERBIN="$USERGAME/OPTCGSim.x86_64"
+SYSBIN="$SYSTEMDIR/OPTCGSim.x86_64"
+
+# Ensure a sane umask so new decks are user-writable
+umask 022
+
+# First-run: copy everything into user dir
+if [ ! -d "$USERGAME" ]; then
+  mkdir -p "$USERDIR"
+  cp -a "$SYSTEMDIR" "$USERDIR/"
+
+  # Ensure the main binary is executable
+  chmod +x "$USERBIN" || install -m755 "$SYSBIN" "$USERBIN"
+
+  # Seed Decks if empty
+  mkdir -p "$USERGAME/Decks"
+  if [ -z "$(ls -A "$USERGAME/Decks" 2>/dev/null)" ]; then
+    cp -a "$SYSTEMDIR/Decks"/* "$USERGAME/Decks"/ 2>/dev/null || true
+  fi
+else
+  # On subsequent runs: self-heal the binary if needed
+  if [ ! -e "$USERBIN" ]; then
+    install -m755 "$SYSBIN" "$USERBIN"
+  elif [ ! -x "$USERBIN" ]; then
+    chmod +x "$USERBIN" || install -m755 "$SYSBIN" "$USERBIN"
+  fi
+fi
+
+# Always ensure Decks directory and contents are writable
+mkdir -p "$USERGAME/Decks"
+chmod -R u+rwX "$USERGAME/Decks" || true
+
+cd "$USERGAME"
+exec @steamrun@ ./OPTCGSim.x86_64 "$@"
