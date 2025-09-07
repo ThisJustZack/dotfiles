@@ -1,4 +1,4 @@
-{ lib, stdenv, makeWrapper, fetchzip }:
+{ lib, stdenv, makeWrapper, fetchzip, bash, steam-run }:
 
 stdenv.mkDerivation rec {
   pname = "optcg-sim";
@@ -21,8 +21,8 @@ stdenv.mkDerivation rec {
 
     install -d $out/libexec
     substitute ${./optcg-sim-run.in} $out/libexec/optcg-sim-run \
-      --subst-var-by bash ${pkgs.bash} \
-      --subst-var-by steamrun ${pkgs.steam-run}/bin/steam-run \
+      --subst-var-by bash ${bash} \
+      --subst-var-by steamrun ${steam-run}/bin/steam-run \
       --subst-var-by out $out
     chmod +x $out/libexec/optcg-sim-run
 

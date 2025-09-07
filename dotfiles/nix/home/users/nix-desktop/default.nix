@@ -41,6 +41,9 @@ in {
                         features.user.gaming.lutris.enable = true;
                         features.user.gaming.mangohud.enable = true;
                         features.user.gaming.protonup.enable = true;
+                        home.packages = with pkgs; [
+                                optcg-sim
+                        ];
                 })
         ];
 }

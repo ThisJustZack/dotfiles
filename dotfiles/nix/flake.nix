@@ -59,6 +59,7 @@
                                         home-manager.nixosModules.home-manager {
                                                 home-manager = {
                                                         extraSpecialArgs = { inherit inputs; };
+                                                        useGlobalPkgs = true;
                                                         users.${user} = import ./home/users/nix-desktop;
                                                 };
                                         }
@@ -96,6 +97,7 @@
                                         home-manager.darwinModules.home-manager {
                                                 home-manager = {
                                                         extraSpecialArgs = { inherit inputs; };
+                                                        useGlobalPkgs = true;
                                                         users.${user} = import ./home/users/macbook;
                                                 };
                                         }
