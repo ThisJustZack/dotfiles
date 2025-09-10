@@ -41,7 +41,7 @@
                                 modules = [
                                         /etc/nixos/hardware-configuration.nix
                                         ./system/os/nixos
-                                        # Global pkgs / overlays / nix settings
+
                                         ({ pkgs, user, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 nixpkgs.overlays = nixpkgsOverlays;
@@ -63,7 +63,6 @@
                                                 };
                                         })
 
-                                        # Home-Manager inside NixOS, share `user` down
                                         home-manager.nixosModules.home-manager
                                         ({ user, ... }: {
                                                 home-manager = {
@@ -115,7 +114,6 @@
                                                 };
                                         })
 
-                                        # Home-Manager on Darwin, share `user` down
                                         home-manager.darwinModules.home-manager
                                         {
                                                 home-manager = {
