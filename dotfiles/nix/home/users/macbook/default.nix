@@ -1,12 +1,12 @@
-{ config, pkgs, ... }: {
+{ user, config, pkgs, ... }: {
         imports = [
                 ../../../system/os/home-manager
                 ../../features
         ];
 
         home = {
-                username = "zack";
-                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+                username = user;
+                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
         };
 
         features.user.application-linking.mac.enable = true;

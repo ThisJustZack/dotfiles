@@ -1,7 +1,6 @@
-{ pkgs, config, osConfig ? {}, lib ? pkgs.lib, ... }:
+{ user, pkgs, config, osConfig ? {}, lib ? pkgs.lib, ... }:
 with lib;
 let
-        user = "zack";
         isGamingMachine =
                 hasAttrByPath [ "functions" "system" "isGamingMachine" "enable" ] osConfig
                 && (osConfig.functions.system.isGamingMachine.enable or false);

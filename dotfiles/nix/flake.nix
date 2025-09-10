@@ -17,112 +17,140 @@
                 };
         };
 
-        outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }: 
-        let 
+        outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
+        let
                 inherit (self) outputs;
-                user = "zack";
 
-                nixpkgsOverlays = import ./overlays { inherit inputs outputs nixpkgsConfig; };
                 nixpkgsConfig = {
                         allowUnfree = true;
                         allowUnfreePredicate = (_: true);
                 };
-        in
-        {
-                # Nix configuration entrypoint
-                nixosConfigurations = {
-                        "zack" = nixpkgs.lib.nixosSystem {
+
+                nixpkgsOverlays = import ./overlays { inherit inputs outputs nixpkgsConfig; };
+
+                nixosUsers = [ "zack" ];
+
+                mkNixos = name:
+                        nixpkgs.lib.nixosSystem {
                                 system = "x86_64-linux";
+                                specialArgs = {
+                                        user = name;
+                                        inherit inputs;
+                                };
+
                                 modules = [
                                         /etc/nixos/hardware-configuration.nix
                                         ./system/os/nixos
-                                        ({ pkgs, ... }: {
+                                        # Global pkgs / overlays / nix settings
+                                        ({ pkgs, user, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
                                                         package = pkgs.nixVersions.stable;
                                                         settings = {
-                                                                trusted-users = [ "${user}" ];
+                                                                trusted-users = [ user ];
                                                                 experimental-features = [ "nix-command" "flakes" ];
                                                         };
                                                 };
 
                                                 users.users.${user} = {
-                                                        description = "${user}";
+                                                        description = user;
                                                         extraGroups = [ "networkmanager" "wheel" ];
                                                         isNormalUser = true;
                                                         shell = pkgs.zsh;
                                                         ignoreShellProgramCheck = true;
                                                 };
                                         })
-                                        home-manager.nixosModules.home-manager {
+
+                                        # Home-Manager inside NixOS, share `user` down
+                                        home-manager.nixosModules.home-manager
+                                        ({ user, ... }: {
                                                 home-manager = {
-                                                        extraSpecialArgs = { inherit inputs; };
+                                                        extraSpecialArgs = { inherit inputs user; };
                                                         useGlobalPkgs = true;
                                                         users.${user} = import ./home/users/nix-desktop;
                                                 };
-                                        }
+                                        })
                                 ];
                         };
+
+                darwinUsers = {
+                        macbook = "zack";
                 };
 
-                # Darwin configuration entrypoint
-                darwinConfigurations = {
-                        "macbook" = darwin.lib.darwinSystem {
+                mkDarwin = name:
+                        let user = darwinUsers.${name};
+                        in darwin.lib.darwinSystem {
                                 system = "aarch64-darwin";
+                                specialArgs = {
+                                        inherit inputs user;
+                                };
+
                                 modules = [
-                                        { nix.enable = false;
-                                          system.primaryUser = "zack"; }
+                                        {
+                                                nix.enable = false;
+                                                system.primaryUser = user;
+                                        }
+
                                         ./system/os/darwin
                                         ./brew
-                                        ({ pkgs, ... }: {
+
+                                        ({ pkgs, user, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
                                                 nixpkgs.overlays = nixpkgsOverlays;
 
                                                 nix = {
                                                         package = pkgs.nixVersions.stable;
                                                         settings = {
-                                                                trusted-users = [ "${user}" ];
+                                                                trusted-users = [ user ];
                                                                 experimental-features = [ "nix-command" "flakes" ];
                                                         };
                                                 };
 
                                                 users.users.${user} = {
-                                                        name = "${user}";
+                                                        name = user;
                                                         home = "/Users/${user}";
                                                         shell = pkgs.zsh;
                                                 };
                                         })
-                                        home-manager.darwinModules.home-manager {
+
+                                        # Home-Manager on Darwin, share `user` down
+                                        home-manager.darwinModules.home-manager
+                                        {
                                                 home-manager = {
-                                                        extraSpecialArgs = { inherit inputs; };
-                                                        useGlobalPkgs = true;
+                                                        extraSpecialArgs = { inherit inputs user; };
                                                         users.${user} = import ./home/users/macbook;
                                                 };
                                         }
                                 ];
                         };
-                };
+        in
+        {
+                # NixOS entrypoint
+                nixosConfigurations =
+                        nixpkgs.lib.genAttrs nixosUsers mkNixos;
 
-                # Standalone home-manager configuration entrypoint
+                # Darwin entrypoint
+                darwinConfigurations =
+                        nixpkgs.lib.genAttrs (builtins.attrNames darwinUsers) mkDarwin;
+
+                # Standalone Home-Manager entrypoint
                 homeConfigurations = {
-                        "wsl" = 
-                        let
-                                system = "x86_64-linux";
-                                pkgs = import nixpkgs {
-                                        inherit system;
-                                        config = nixpkgsConfig;
-                                        overlays = nixpkgsOverlays;
+                        wsl =
+                                let
+                                        system = "x86_64-linux";
+                                        pkgs = import nixpkgs {
+                                                inherit system;
+                                                config = nixpkgsConfig;
+                                                overlays = nixpkgsOverlays;
+                                        };
+                                in
+                                home-manager.lib.homeManagerConfiguration {
+                                        inherit pkgs;
+                                        extraSpecialArgs = { inherit inputs; };
+                                        modules = [ ./home/users/wsl ];
                                 };
-                        in
-                        home-manager.lib.homeManagerConfiguration {
-                                inherit pkgs;
-                                extraSpecialArgs = { inherit inputs; };
-                                modules = [
-                                        ./home/users/wsl
-                                ];
-                        };
                 };
         };
 }

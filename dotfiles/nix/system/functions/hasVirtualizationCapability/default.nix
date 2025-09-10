@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }: 
+{ user, lib, pkgs, config, ... }: 
 with lib;
 let cfg = config.functions.system.hasVirtualizationCapability;
 
@@ -8,6 +8,7 @@ in {
         };
         config = mkIf cfg.enable {
                 boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+                users.users.${user}.extraGroups = [ "docker" ];
                 virtualisation = {
                         libvirtd.enable = true;
                         docker = {
