@@ -4,6 +4,9 @@ let
         isGamingMachine =
                 hasAttrByPath [ "functions" "system" "isGamingMachine" "enable" ] osConfig
                 && (osConfig.functions.system.isGamingMachine.enable or false);
+        hasVirtualizationCapability =
+                hasAttrByPath [ "functions" "system" "hasVirtualizationCapability" "enable" ] osConfig
+                 && (osConfig.functions.system.hasVirtualizationCapability.enable or false);
 in {
         imports = [
                 ../../../system/os/home-manager
@@ -43,6 +46,11 @@ in {
                         features.user.gaming.protonup.enable = true;
                         home.packages = with pkgs; [
                                 optcg-sim
+                        ];
+                })
+                (mkIf hasVirtualizationCapability {
+                        home.packages = with pkgs; [
+                                docker-compose
                         ];
                 })
         ];
