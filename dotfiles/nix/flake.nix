@@ -59,6 +59,7 @@
                                                         extraGroups = [ "wheel" ];
                                                         linger = true;
                                                         isNormalUser = true;
+                                                        ignoreShellProgramCheck = true;
                                                 };
                                         })
 

@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }: 
+{ user, lib, pkgs, config, ... }: 
 with lib;
 let cfg = config.features.system.networking;
 
