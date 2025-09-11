@@ -9,5 +9,6 @@ in {
         config = mkIf cfg.enable {
                 environment.shells = [ pkgs.fish ];
                 users.users.${user}.shell = pkgs.fish;
+                programs.fish.enable = true;
         };
 }
