@@ -59,8 +59,6 @@
                                                         extraGroups = [ "wheel" ];
                                                         linger = true;
                                                         isNormalUser = true;
-                                                        shell = pkgs.zsh;
-                                                        ignoreShellProgramCheck = true;
                                                 };
                                         })
 

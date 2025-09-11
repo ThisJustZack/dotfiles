@@ -12,6 +12,8 @@
                 ./login-environment/sddm
                 ./networking
                 ./printing
+                ./shell/fish
+                ./shell/zsh
                 ./time-zone/us-east-coast
         ];
 }

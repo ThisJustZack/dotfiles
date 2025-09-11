@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }: 
+{ lib, pkgs, config, ... }:
 with lib;
 let cfg = config.features.user.shell.zsh;
 
@@ -9,7 +9,7 @@ in {
         config = mkIf cfg.enable {
                 programs.zsh = {
                         enable = true;
-                        autosuggestion.enable = true;
+                        autosuggestions.enable = true;
                         enableCompletion = true;
                         syntaxHighlighting.enable = true;
                 };

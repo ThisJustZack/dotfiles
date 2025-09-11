@@ -18,6 +18,8 @@
     features.system.printing.enable = true;
     features.system.audio.enable = true;
 
+    features.system.shell.zsh.enable = true;
+
     functions.system.isGamingMachine.enable = true;
     functions.system.hasVirtualizationCapability.enable = true;
 

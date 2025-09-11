@@ -21,6 +21,7 @@
                 ./peripheral/keyboard/wooting
                 ./peripheral/printer/epson-et8550
                 ./peripheral/tablet/opendriver
+                ./shell/fish
                 ./shell/zsh
                 ./software-development/javascript
                 ./software-development/nix

@@ -7,6 +7,12 @@ let
         hasVirtualizationCapability =
                 hasAttrByPath [ "functions" "system" "hasVirtualizationCapability" "enable" ] osConfig
                  && (osConfig.functions.system.hasVirtualizationCapability.enable or false);
+        usesZsh =
+                hasAttrByPath [ "features" "system" "shell" "zsh" "enable" ] osConfig
+                 && (osConfig.features.system.shell.zsh.enable or false);
+        usesFish =
+                hasAttrByPath [ "features" "system" "shell" "fish" "enable" ] osConfig
+                 && (osConfig.features.system.shell.fish.enable or false);
 in {
         imports = [
                 ../../../system/os/home-manager
@@ -21,7 +27,6 @@ in {
                         };
 
                         features.user.terminal.kitty.enable = true;
-                        features.user.shell.zsh.enable = true;
                         features.user.command-line.starship.enable = true;
                         features.user.software-development.javascript.enable = true;
                         features.user.software-development.rust.enable = true;
@@ -52,6 +57,12 @@ in {
                         home.packages = with pkgs; [
                                 docker-compose
                         ];
+                })
+                (mkIf usesZsh {
+                        features.user.shell.zsh.enable = true;
+                })
+                (mkIf usesFish {
+                        features.user.shell.fish.enable = true;
                 })
         ];
 }
