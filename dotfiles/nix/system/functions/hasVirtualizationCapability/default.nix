@@ -8,11 +8,11 @@ in {
         };
         config = mkIf cfg.enable {
                 boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
-                users.users.${user}.extraGroups = [ "docker" ];
+                users.extraGroups.docker.members = [ user ];
                 virtualisation = {
                         libvirtd.enable = true;
                         docker = {
-                                enable = true;
+                                enable = false;
                                 rootless = {
                                         enable = true;
                                         setSocketVariable = true;

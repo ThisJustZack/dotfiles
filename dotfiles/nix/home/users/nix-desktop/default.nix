@@ -33,6 +33,7 @@ in {
                         features.user.communication-service.discord.enable = true;
                         features.user.browser.brave.enable = true;
                         features.user.browser.firefox.enable = true;
+                        features.user.vpn.proton.enable = true;
                 }
                 (mkIf isGamingMachine {
                         features.user.gaming.bottles.enable = true;
