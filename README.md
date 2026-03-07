@@ -1,11 +1,12 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-This is my dotfile configuration that is used across all of my systems that have some flavor of Linux. It utilizes the [Nix ecosystem](https://www.nixos.wiki/wiki/Nix_Ecosystem) to have declarative, reproducible environments for each system to make the only consideration be how stable a system should be.
+This is my dotfile configuration that is used across all of my systems that have some flavor of Linux. It utilizes the [Nix ecosystem](https://wiki.nixos.org/wiki/Nix_ecosystem) to have declarative, reproducible environments for each system to make the only consideration be how stable a system should be.
 
 ## **Content**
 
 - ``Operating System``: MacOS, NixOS, Linux-derived operating systems
 - ``Window Manager``: Default (MacOS), KDE Plasma (NixOS), Default (Linux)
+- ``Secure Boot Tooling``: Lanzaboote (NixOS)
 - ``Terminal``: kitty
 - ``Shell``: zsh
 - ``Editor``: neovim, VS Code
@@ -13,12 +14,12 @@ This is my dotfile configuration that is used across all of my systems that have
 
 ## **Structure**
 
-- ``bin``: Profile management shell scripts
-- ``system``: Shared system environments between NixOS, MacOS, and other Linux-derived operating systems (``system/os``) with services, their respective configurations (``system/features``), and system capabilities (``system/functions``)
-- ``home``: User-defined environments (``home/users``) with applications and their respective configurations (``home/features``)
-- ``brew``: Homebrew configuration and environment for MacOS
-- ``pkgs``: Custom packages written for use in ``home``
-- ``overlays``: Overlays for nixpkgs and overwritten packages for custom builds
+- [``bin``](./dotfiles/nix/bin): Profile management shell scripts
+- [``system``](./dotfiles/nix/system): Shared system environments between NixOS, MacOS, and other Linux-derived operating systems ([``system/os``](./dotfiles/nix/system/os)) with services, their respective configurations ([``system/features``](./dotfiles/nix/system/features)), and system capabilities ([``system/functions``](./dotfiles/nix/system/functions))
+- [``home``](./dotfiles/nix/home): User-defined environments ([``home/users``](./dotfiles/nix/home/users)) with applications and their respective configurations ([``home/features``](./dotfiles/nix/home/features))
+- [``brew``](./dotfiles/nix/brew): Homebrew configuration and environment for MacOS
+- [``pkgs``](./dotfiles/nix/pkgs): Custom packages written for use in [``home``](./dotfiles/nix/home)
+- [``overlays``](./dotfiles/nix/overlays): Overlays for nixpkgs and overwritten packages for custom builds
 
 ## **Install Dependencies**
 

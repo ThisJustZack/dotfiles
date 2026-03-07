@@ -2,6 +2,9 @@
         imports = [
                 ./audio
                 ./bootloader/grub
+                ./bootloader/lanzaboote
+                ./bootloader/systemd
+                ./bluetooth
                 ./desktop-environment/cosmic
                 ./desktop-environment/gnome
                 ./desktop-environment/hyprland

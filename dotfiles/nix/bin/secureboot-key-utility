@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd $HOME/.config/nix
+
+if [ "$1" = "create"]; then
+        ./bin/secureboot-utilities/create-keys
+elif  [ "$1" = "verify"]; then
+        ./bin/secureboot-utilities/verify-keys
+elif  [ "$1" = "enroll"]; then
+        ./bin/secureboot-utilities/enroll-keys
+elif  [ "$1" = "launch"]; then
+        ./bin/secureboot-utilities/initialize-key-shell
+fi

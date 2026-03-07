@@ -1,27 +1,29 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-    imports = [
-        ../../features
-        ../../functions
-    ];
+        imports = [
+            ../../features
+            ../../functions
+        ];
 
-    features.system.bootloader.grub.enable = true;
-    features.system.networking.enable = true;
+        features.system.bootloader.systemd.enable = true;
+        features.system.bootloader.lanzaboote.enable = true;
+        features.system.networking.enable = true;
 
-    networking.hostName = "nixos";
+        networking.hostName = "nixos";
 
-    features.system.time-zone.us-east-coast.enable = true;
-    features.system.locale.us.enable = true;
+        features.system.time-zone.us-east-coast.enable = true;
+        features.system.locale.us.enable = true;
 
-    features.system.login-environment.sddm.enable = true;
-    features.system.desktop-environment.kde.enable = true;
+        features.system.login-environment.sddm.enable = true;
+        features.system.desktop-environment.kde.enable = true;
 
-    features.system.printing.enable = true;
-    features.system.audio.enable = true;
+        features.system.printing.enable = true;
+        features.system.audio.enable = true;
+        features.system.bluetooth.enable = true;
 
-    features.system.shell.zsh.enable = true;
+        features.system.shell.zsh.enable = true;
 
-    functions.system.isGamingMachine.enable = true;
-    functions.system.hasVirtualizationCapability.enable = true;
+        functions.system.isGamingMachine.enable = true;
+        functions.system.hasVirtualizationCapability.enable = true;
 
-    system.stateVersion = "25.05";
+        system.stateVersion = "25.05";
 }

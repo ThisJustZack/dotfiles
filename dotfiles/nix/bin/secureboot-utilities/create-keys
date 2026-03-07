@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$(ls -A /etc/secureboot)" ]; then
+        sudo sbctl setup --migrate
+fi
+
+sudo sbctl create-keys

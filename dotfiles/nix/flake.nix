@@ -15,9 +15,13 @@
                         url = "github:nix-community/home-manager/release-25.05";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+                lanzaboote = {
+                        url = "github:nix-community/lanzaboote/v1.0.0";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
         };
 
-        outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
+        outputs = inputs@{ self, nixpkgs, darwin, home-manager, lanzaboote, ... }:
         let
                 inherit (self) outputs;
 
@@ -39,8 +43,10 @@
                                 };
 
                                 modules = [
-                                        /etc/nixos/hardware-configuration.nix
+
+                                        lanzaboote.nixosModules.lanzaboote
                                         ./system/os/nixos
+                                        /etc/nixos/hardware-configuration.nix
 
                                         ({ pkgs, user, ... }: {
                                                 nixpkgs.config = nixpkgsConfig;
